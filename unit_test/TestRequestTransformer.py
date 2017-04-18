@@ -19,5 +19,18 @@ class TestRequestTransformer(unittest.TestCase):
         result = headers_to_dict(received)
         self.assertEqual(result, expected)
 
+    def test_parse_request_line(self):
+        request = "GET /index.html HTTP/1.1"
+        result = parse_request_line(request)
+        self.assertEqual(result['method'], 'GET')
+        self.assertEqual(result['target'], '/index.html')
+        self.assertEqual(result['query'], '')
+        self.assertEqual(result['protocol'], 'HTTP/1.1')
+
+    def test_get_request_regexp(self):
+        request = "POST /index.html HTTP/1.1"
+        result = get_request_regexp()
+        self.assertRegexpMatches(request, result)
+
 if __name__ == '__main__':
     unittest.main()
