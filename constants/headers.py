@@ -1,0 +1,8 @@
+ACCEPT = "Accept"
+ACCEPT_CHARSET = "Accept-Charset"
+ACCEPT_ENCODING = "Accept-Encoding"
+ACCEPT_LANGUAGE = "Accept-Language"
+CACHE_CONTROL = "Cache-Control"
+CONNECTION = "Connection"
+COOKIE = "Cookie"
+CONTENT_LENGTH = "Content-Length"
