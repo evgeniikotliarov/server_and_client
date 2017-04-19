@@ -3,10 +3,13 @@ import re
 from server.entities.Request import *
 from constants.const_main import *
 from util.newline import get_newline_char
+import util.regexes as Regexes
 
 def proceed_request(raw_request):
     new_line = get_newline_char(raw_request)
-    request_data_lines = raw_request.split(new_line)[1:] # first line in requests is empty
+    request_data_lines = raw_request.split(new_line)
+    if len(request_data_lines[0]) < 1:
+        request_data_lines = request_data_lines[1:]
 
     headers = ""
     body = ""
@@ -40,7 +43,7 @@ def headers_to_dict(headers_list):
     return headers
 
 def parse_request_line(request):
-    found = re.findall(get_request_regex(), request)
+    found = re.findall(Regexes.get_request_regex(), request)
     found = found[0]
     if len(found) <= 0: return None
     full, method, target, query, protocol = found
@@ -50,18 +53,3 @@ def parse_request_line(request):
         'query': query,
         'protocol': protocol
     }
-
-def get_request_regex():
-    methods = r'GET|POST|PUT|DELETE|OPTIONS'
-    host_symbols = r'[\w.\-\d/:]'
-    space = r'\s'
-    query = r'(?:[?&][^\s&]+)*'
-    protocol = r'HTTP/.*'
-    request_regex = "(({methods}){space}+({host_symbols}+)({query}){space}+({protocol}))".format(
-        methods = methods,
-        space = space,
-        host_symbols = host_symbols,
-        query = query,
-        protocol = protocol
-        )
-    return request_regex

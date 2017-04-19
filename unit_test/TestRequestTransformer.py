@@ -29,7 +29,7 @@ class TestRequestTransformer(unittest.TestCase):
 
     def test_get_request_regexp(self):
         request = "POST /index.html HTTP/1.1"
-        result = get_request_regexp()
+        result = Regexes.get_request_regex()
         self.assertRegexpMatches(request, result)
 
 if __name__ == '__main__':
