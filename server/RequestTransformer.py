@@ -5,34 +5,38 @@ from constants.const_main import *
 from util.newline import get_newline_char
 import util.regexes as Regexes
 
-def proceed_request(raw_request):
+new_line = CRLF
+
+def transform_request(raw_request):
+    global new_line
     new_line = get_newline_char(raw_request)
-    request_data_lines = raw_request.split(new_line)
-    if len(request_data_lines[0]) < 1:
-        request_data_lines = request_data_lines[1:]
 
-    headers = ""
-    body = ""
+    request_lines = raw_request.split(new_line)
+    if len(request_lines[0]) < 1:
+        request_lines = request_lines[1:]
 
-    request_line_text = request_data_lines[0]
-    if len(request_data_lines) > 1:
-        headers_and_body = request_data_lines[1:]
-        body_and_header_divider = headers_and_body.index(EMPTY_STRING)
-        headers_as_strings = headers_and_body[:body_and_header_divider]
-        body = headers_and_body[body_and_header_divider + 1:]
-        headers = headers_to_dict(headers_as_strings)
+    headers, body = EMPTY_STRING, EMPTY_STRING
+
+    request_line_text = request_lines[0]
+    rest = request_lines[1:]
+    if has_headers(rest):
+        if has_body(rest):
+            headers_end = rest.index(EMPTY_STRING)
+            headers_as_list = rest[:headers_end]
+            body = ''.join(rest[headers_end + 1:])
+            headers = headers_to_dict(headers_as_list)
+        else:
+            headers = headers_to_dict(rest)
 
     request_line = parse_request_line(request_line_text)
 
-    request = Request(
+    return Request(
         request_line["method"],
         request_line["target"],
         request_line["query"],
         request_line["protocol"],
         headers,
         body)
-
-    return request
 
 def headers_to_dict(headers_list):
     headers = {}
@@ -53,3 +57,9 @@ def parse_request_line(request):
         'query': query,
         'protocol': protocol
     }
+
+def has_headers(request_lines):
+    return len(request_lines) >= 1
+
+def has_body(request_lines):
+    return EMPTY_STRING in request_lines
