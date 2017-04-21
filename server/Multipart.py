@@ -61,8 +61,3 @@ class MultipartRequest:
         self.content_disposition = disposition
         self.content_type = content_type
         self.file = file
-
-
-class MultipartRequest:
-    def __init__(self):
-        pass

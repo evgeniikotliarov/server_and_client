@@ -15,18 +15,18 @@ def transform_request(raw_request):
     if len(request_lines[0]) < 1:
         request_lines = request_lines[1:]
 
-    headers, body = EMPTY_STRING, EMPTY_STRING
-
     request_line_text = request_lines[0]
     rest = request_lines[1:]
-    if has_headers(rest):
-        if has_body(rest):
-            headers_end = rest.index(EMPTY_STRING)
-            headers_as_list = rest[:headers_end]
-            body = ''.join(rest[headers_end + 1:])
-            headers = headers_to_dict(headers_as_list)
-        else:
-            headers = headers_to_dict(rest)
+
+    headers, body = b'', ''b
+    if has_headers(rest) and has_body(rest):
+        headers_end = rest.index(EMPTY_BYTE_STR)
+        headers_as_list = rest[:headers_end]
+
+        body = CRLF_BYTE.join(rest[headers_end + 1:])
+        headers = headers_to_dict(headers_as_list)
+    elif has_headers(rest):
+        headers = headers_to_dict(rest)
 
     request_line = parse_request_line(request_line_text)
 
@@ -41,7 +41,9 @@ def transform_request(raw_request):
 def headers_to_dict(headers_list):
     headers = {}
     for header in headers_list:
-        name, value = header.split(":", 1)
+        if BYTE_COLON not in header:
+            continue
+        name, value = header.split(BYTE_COLON, 1)
         name, value = name.strip(), value.strip()
         headers[name] = value
     return headers
@@ -62,4 +64,4 @@ def has_headers(request_lines):
     return len(request_lines) >= 1
 
 def has_body(request_lines):
-    return EMPTY_STRING in request_lines
+    return EMPTY_BYTE_STR in request_lines
