@@ -18,7 +18,7 @@ def transform_request(raw_request):
     request_line_text = request_lines[0]
     rest = request_lines[1:]
 
-    headers, body = b'', ''b
+    headers, body = b'', b''
     if has_headers(rest) and has_body(rest):
         headers_end = rest.index(EMPTY_BYTE_STR)
         headers_as_list = rest[:headers_end]
