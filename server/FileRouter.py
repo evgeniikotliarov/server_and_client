@@ -6,7 +6,7 @@ def file_exists(file_name):
         return os.path.exists(file_name) and not os.path.isdir(file_name)
     return False
 
-def is_allowed_directory(file_name):
+def is_allowed_direct(file_name):
     requested_path = os.path.join(PUBLIC_FOLDER, file_name)
     common_prefix = os.path.commonprefix([requested_path, PUBLIC_FOLDER])
     return common_prefix == PUBLIC_FOLDER
