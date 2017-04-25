@@ -1,9 +1,14 @@
+from server.User import *
+from server.Publication import *
+
 class DataAccessLayer:
 
-    def create_user(username):
+    def create_user(self, username, password):
+        self.user = User(username, password)
         pass
 
-    def create_publication(self):
+    def create_publication(self, user_id, title, text):
+        self.post = Publication(user_id, title, text)
         pass
 
     def delete_publication(id):
