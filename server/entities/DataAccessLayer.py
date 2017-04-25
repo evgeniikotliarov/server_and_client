@@ -1,17 +1,12 @@
-from server.User import *
-from server.Publication import *
-
-class Storage:
-    def __init__(self, user, publication):
-        self.user = user
-        self.publication = publication
+class DataAccessLayer:
+    def __init__(self, storage):
+        self.users = storage.get_users_storage()
+        self.publications = storage.get_publications_storage()
 
     def create_user(self, username, password):
-        self.user = User(username, password)
         pass
 
     def create_publication(self, user_id, title, text):
-        self.post = Publication(user_id, title, text)
         pass
 
     def delete_publication(id):
