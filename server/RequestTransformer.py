@@ -2,7 +2,7 @@ import re
 
 import util.regexes as Regexes
 from constants.const_main import *
-from server.entities.Request import *
+from storage.entities.Request import *
 from util.newline import get_newline_char
 
 new_line = CRLF
