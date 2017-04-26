@@ -3,10 +3,10 @@ from storage.entities.Publication import Publication
 
 publications = {}
 
-def create_publication(self, username, title, text, attachment=None):
+def create_publication(username, title, text, attachment=None):
     publication = Publication(username, title, text, attachment)
     unique_id = generate_id()
-    self.publications[unique_id] = publication
+    publications[unique_id] = publication
     return publication
 
 def get_publication(unique_id):
@@ -14,7 +14,7 @@ def get_publication(unique_id):
         return publications[unique_id]
     return None
 
-def generate_id(self):
+def generate_id():
     unique_id = uuid.uuid4()
     return unique_id
     # TODO
