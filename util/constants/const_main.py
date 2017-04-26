@@ -14,8 +14,8 @@ BYTE_COLON = b':'
 REQUEST_RECV_SIZE = 1024
 MAX_CONNECTIONS = 10
 
-host = ''
-port = 3333
+HOST = ''
+PORT = 3333
 
 reuse_adress = True
 
