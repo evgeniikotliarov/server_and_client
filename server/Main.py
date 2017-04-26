@@ -4,7 +4,7 @@ import server.Multipart as multi
 
 import server.RequestParser as RequestParser
 import server.RequestTransformer as RequestTransformer
-from constants.const_main import *
+from util.constants.const_main import *
 
 serversocket = socket.socket(socket_family, socket_type)
 if reuse_adress: serversocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)

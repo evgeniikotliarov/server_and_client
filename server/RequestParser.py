@@ -1,5 +1,5 @@
 import time
-from constants.misc import *
+from util.constants.const_main import *
 
 def get_raw_request(connection, timeout=1):
     connection.setblocking(0)

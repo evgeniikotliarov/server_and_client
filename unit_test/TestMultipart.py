@@ -18,4 +18,8 @@ class TestMultipart(unittest.TestCase):
         self.assertEqual(get_boundary(self.simple), None)
 
     def test_get_file_part(self):
-        self.assertTrue(get_file_part(self.with_image))
+        multipart_fields = get_multipart_fields(self.with_image)
+        self.assertTrue(type(multipart_fields) == list)
+        self.assertTrue(len(multipart_fields) == 3)
+        self.assertEqual(multipart_fields[1].content_disposition, b'form-data; name="tel"')
+        self.assertTrue(len(multipart_fields[2].body) > 100) #file

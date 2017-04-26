@@ -1,4 +1,4 @@
-from constants.const_main import *
+from util.constants.const_main import *
 
 def get_newline_char(text):
     is_in_text = lambda char: text.find(char) >= 0

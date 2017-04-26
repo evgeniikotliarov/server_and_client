@@ -24,6 +24,6 @@ def get_content_type_regex():
     r = br'Content-Type:\s?(.*)\r\n'
     return r
 
-def get_multipart_file_regex():
-    r = br'Content-Type:\s?.*[\r\n]*(.*)'
+def get_multipart_body_regex():
+    r = br'Content-Disposition:\s?.*(?:[\r\n]{0,1}Content-Type:\s?.*[\r\n]{0,1})?.*[\r\n]*(.*)\r?'
     return r

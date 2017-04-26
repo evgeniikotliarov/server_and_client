@@ -1,12 +1,12 @@
 import re
-from constants.headers import *
-from constants.const_main import *
+
+from util.constants.headers import *
+
+from util.constants.const_main import *
 from util.regexes import *
 
-'''
-    All requests come as instances of server/entities/Request.py class
-'''
-def get_file_part(request):
+def get_multipart_fields(request):
+    multipart_fields = []
     # ---------------------------165903753415996587151253452    - in Content-type
     # -----------------------------165903753415996587151253452  - Actual boundary
     # -----------------------------165903753415996587151253452-- - Last boundary
@@ -22,13 +22,17 @@ def get_file_part(request):
     # We can throw them off
     fields = fields[1:-1]
 
-    return True # TODO remove this - just for running it in tests
+    for field in fields:
+        multipart_fields.append(wrap_multipart(field))
 
-def if_multipart(request):
+    return multipart_fields
+
+def is_multipart(request):
     headers = request.headers
-        if has_content_type(request) and MULTIPART in headers[CONTENT_TYPE]:
-            return True
-        return False
+    if has_content_type(request) and MULTIPART in headers[CONTENT_TYPE]:
+        return True
+    return False
+
 def get_boundary(request):
     if is_multipart(request):
         content_type = request.headers[CONTENT_TYPE]
@@ -39,7 +43,7 @@ def get_boundary(request):
     return None
 
 def has_content_type(request):
-    return request.headers.__constants__(CONTENT_TYPE)
+    return request.headers.__contains__(CONTENT_TYPE)
 
 def wrap_multipart(multipart_field):
     disposition_regex = get_content_disposition_regex()
@@ -50,14 +54,14 @@ def wrap_multipart(multipart_field):
     found = re.search(content_type_regex, multipart_field)
     content_type = found.group(1) if found else None
 
-    file_part_regex = get_multipart_file_regex()
+    file_part_regex = get_multipart_body_regex()
     found = re.search(file_part_regex, multipart_field)
     file_bytes = found.group(1) if found else None
 
-    return MultipartRequest(disposition, content_type, file_bytes)
+    return MultipartField(disposition, content_type, file_bytes)
 
-class MultipartRequest:
-    def __init__(self, disposition, content_type, file):
+class MultipartField:
+    def __init__(self, disposition, content_type, body):
         self.content_disposition = disposition
         self.content_type = content_type
-        self.file = file
+        self.body = body
