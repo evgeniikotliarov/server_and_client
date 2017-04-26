@@ -1,21 +1,20 @@
 import uuid
-from storage.entities import Publication
+from storage.entities.Publication import Publication
 
-class PublicationsStorage:
-    def __init__(self, user, publication):
-        self.publications = {}
+publications = {}
 
-    def create_publication(self, username, title, text, attachment):
-        publication = Publication(username, title, text, attachment)
-        id = self.generate_id()
-        self.publications[id] = publication
+def create_publication(self, username, title, text, attachment=None):
+    publication = Publication(username, title, text, attachment)
+    unique_id = generate_id()
+    self.publications[unique_id] = publication
+    return publication
 
-    def get_publication(self, id):
-        if id in self.publications.keys():
-            return self.publications[id]
-        return None
+def get_publication(unique_id):
+    if unique_id in publications.keys():
+        return publications[unique_id]
+    return None
 
-    def generate_id(self):
-        id = uuid.uuid4()
-        return id
-        # TODO
+def generate_id(self):
+    unique_id = uuid.uuid4()
+    return unique_id
+    # TODO
