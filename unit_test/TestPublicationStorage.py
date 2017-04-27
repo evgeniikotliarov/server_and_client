@@ -9,10 +9,10 @@ class TestPublicationsStorage(unittest.TestCase):
         self.assertTrue(isinstance(result, Publication))
 
     def test_get_publication(self):
-        pass
-
-    def test_generate_id(self):
-        test_unique_number = publication_storage.generate_id()
+        public = publication_storage.create_publication('Document', 'test', 'text')
+        all_publications = publication_storage.publications
+        doc = all_publications[public.get_id()]
+        self.assertEqual(public, doc)
 
 if __name__ == '__main__':
     unittest.main()
