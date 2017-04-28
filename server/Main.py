@@ -12,9 +12,9 @@ connection, address = serversocket.accept()
 raw_request = RequestParser.get_raw_request(connection)
 
 request = RequestTransformer.transform_request(raw_request)
-file_to_write = connection.makefile('wb', 0)
+file_to_write = connection.makefile(WRITE_BUFFER, 0)
 
-if is_multipart(request):
+if is_multipart(request) and methods_allows_action(request):
     multipart_fields = wrap_multipart(request)
     #TODO implement the usage of multipart fields
 

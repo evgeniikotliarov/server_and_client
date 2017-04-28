@@ -1,3 +1,6 @@
+def get_regex_date_format():
+    return r'\w{3},\s\d{2}\s\w{3}\s\d{4}\s\d{2}:\d{2}:\d{2}\s[A-Z]{3}'
+
 def get_request_regex():
     methods = r'GET|POST|PUT|DELETE|OPTIONS'
     host_symbols = r'[\w.\-\d/:]'
@@ -26,4 +29,8 @@ def get_content_type_regex():
 
 def get_multipart_body_regex():
     r = br'Content-Disposition:\s?.*(?:[\r\n]{0,1}Content-Type:\s?.*[\r\n]{0,1})?.*[\r\n]*(.*)\r?'
+    return r
+
+def get_disposition_name_regex():
+    r = br'name="(.*)"'
     return r

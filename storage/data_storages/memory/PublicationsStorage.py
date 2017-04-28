@@ -1,5 +1,6 @@
 from collections import OrderedDict
 from storage.entities.Publication import Publication
+from util.id_generator import generate_id
 
 publications = OrderDict()
 

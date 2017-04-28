@@ -33,6 +33,9 @@ def is_multipart(request):
         return True
     return False
 
+def method_allows_action(request):
+    return request.method in METHODS_ALLOWING_ACTION
+
 def get_boundary(request):
     if is_multipart(request):
         content_type = request.headers[CONTENT_TYPE]
@@ -62,6 +65,12 @@ def wrap_multipart(multipart_field):
 
 class MultipartField:
     def __init__(self, disposition, content_type, body):
-        self.content_disposition = disposition
+        self.field_name = self._get_field_name(disposition)
         self.content_type = content_type
         self.body = body
+
+    def _get_field_name(self, disposition):
+        name_regex = get_disposition_name_regex()
+        found = re.search(name_regex, disposition)
+        name = found.group(1)
+        return name

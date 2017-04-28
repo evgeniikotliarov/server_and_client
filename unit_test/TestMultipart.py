@@ -21,5 +21,5 @@ class TestMultipart(unittest.TestCase):
         multipart_fields = get_multipart_fields(self.with_image)
         self.assertTrue(type(multipart_fields) == list)
         self.assertTrue(len(multipart_fields) == 3)
-        self.assertEqual(multipart_fields[1].content_disposition, b'form-data; name="tel"')
+        self.assertEqual(multipart_fields[1].field_name, b'tel')
         self.assertTrue(len(multipart_fields[2].body) > 100) #file
