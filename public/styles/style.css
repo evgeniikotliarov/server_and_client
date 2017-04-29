@@ -1,0 +1,122 @@
+html{
+	width: 100%;
+	height: 100%;
+}
+body{
+	width: 100%;
+	height: 100%;
+}
+.container{
+	min-width: 320px;
+	max-width: 1220px;
+	margin: 0 auto;
+}
+/* NAV */
+nav{
+	float: right;
+}
+.menu{
+	width: 100%;
+	padding-top: -30px;
+	display: inline-block;
+}
+.menu li a{
+	font-family: Roboto, sans-serif;
+	font-size: 14px;
+	color: grey;
+}
+nav ul li {
+	display: inline-block;
+	padding: 0  10px;
+}
+nav ul{
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+}
+nav ul li a{
+	text-decoration: none;
+	color: #9699a6;
+	padding: 25px 0 0 0;
+}
+
+/* Footer */
+
+.footer{
+	background-color: #ffffff;
+	height: 75px;
+}
+.footer h3{
+	text-align: center;
+	font-family: Roboto, sans-serif;
+	font-weight: 400;
+	font-size: 22px;
+	color: grey;
+}
+.footer p{
+	text-align: center;
+	padding-top: -10px;
+	font-family: Roboto, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: grey;
+}
+
+/* registration html */
+
+.regisrtration{
+	height: 100%;
+	background-color: #444f81;
+	padding-left: 550px;
+	padding-top: 150px;
+}
+.regisrtration p{
+	font-family: Roboto, sans-serif;
+	font-size: 14px;
+	color: white;
+}
+
+/* Login html */
+
+.login_login{
+	height: 100%;
+	background-color: #457782;
+	padding-left: 550px;
+	padding-top: 150px;
+}
+.login_login p{
+	font-family: Roboto, sans-serif;
+	font-size: 14px;
+	color: white;
+}
+
+/* Posts */
+
+.posts h3{
+	font-family: Roboto, sans-serif;
+	color: #ffffff;
+	font-size: 36 px;
+	text-align: center;
+	font-weight: 400;
+}
+.posts p{
+	font-family: Roboto;
+	color: #dcee12;
+	font-size: 16px;
+	font-weight: 300;
+	text-align: center;
+
+}
+.index_post{
+	background-color: #60b4b7;
+	height: 100%;
+}
+.index_post ul{
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	justify-content:flex-end;
+}
+.button {
+	float: right;
+}

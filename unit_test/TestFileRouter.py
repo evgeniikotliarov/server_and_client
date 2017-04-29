@@ -11,27 +11,27 @@ class TestFileRouter(unittest.TestCase):
         self.assertEqual(result, False)
 
     def test_directory_is_not_allowed(self):
-        file = 'views/index.html'
+        file = 'styles/index.html'
         result = is_allowed_directory(file)
         self.assertEqual(result, True)
 
     def test_file_exists(self):
-        file = 'views/index.html'
+        file = 'styles/index.html'
         result = file_exists(get_public(file))
         self.assertTrue(result)
 
     def test_file_not_exists(self):
-        file = 'views/end.html'
+        file = 'styles/end.html'
         result = file_exists(get_public(file))
         self.assertEqual(result, False)
 
     def test_file_absolute_path(self):
-        file = 'views/index.html'
+        file = 'styles/index.html'
         result = get_file(file)
-        self.assertEqual(result, os.path.join(PUBLIC_FOLDER, 'views/index.html'))
+        self.assertEqual(result, os.path.join(PUBLIC_FOLDER, 'styles/index.html'))
 
     def test_file_has_wrong_path_and_is_not_traversal(self):
-        file = '/views/index.html'
+        file = '/styles/index.html'
         result = get_file(file)
         self.assertEqual(result, 'Not found')
 
