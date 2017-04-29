@@ -1,8 +1,8 @@
 import unittest
 
-from server.Multipart import *
+from server.multipart import *
 from util.request_samples import *
-from server.RequestTransformer import transform_request
+from server.request_transformer import transform_request
 
 class TestMultipart(unittest.TestCase):
     multi = transform_request(multipart_request)

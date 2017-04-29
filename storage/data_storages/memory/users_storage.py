@@ -1,4 +1,4 @@
-from storage.entities.User import User
+from storage.entities.user import User
 
 users = {}
 

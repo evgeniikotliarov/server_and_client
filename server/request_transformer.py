@@ -1,7 +1,7 @@
 import re
 
 import util.regexes as Regexes
-from storage.entities.Request import *
+from storage.entities.request import *
 from util.constants.const_main import *
 from util.newline import get_newline_char
 

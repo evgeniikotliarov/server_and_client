@@ -1,4 +1,4 @@
-from storage.data_storages.memory.PublicationsStorage import *
+from storage.data_storages.memory.publications_storage import *
 
 class Publications:
     def __init__(self, publication_storage):

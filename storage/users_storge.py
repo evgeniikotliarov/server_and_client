@@ -1,11 +1,11 @@
-from storage.entities import User
+from storage.entities import user
 
 class UsersStorage:
     def __init__(self, user, publication):
         self.users = {}
 
     def create_user(self, username, password):
-        user = User(username, password)
+        user = user(username, password)
         self.users[username] = user
 
     def get_user(self, username):

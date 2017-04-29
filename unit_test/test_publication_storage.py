@@ -1,6 +1,6 @@
 import unittest
-import storage.data_storages.memory.PublicationsStorage as publication_storage
-from storage.entities.Publication import Publication
+import storage.data_storages.memory.publications_storage as publication_storage
+from storage.entities.publication import Publication
 
 class TestPublicationsStorage(unittest.TestCase):
 

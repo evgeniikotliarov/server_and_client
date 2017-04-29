@@ -1,7 +1,5 @@
 import re
-
 from util.constants.headers import *
-
 from util.constants.const_main import *
 from util.regexes import *
 

@@ -1,5 +1,5 @@
 import unittest
-from server.RequestTransformer import *
+from server.request_transformer import *
 
 class TestRequestTransformer(unittest.TestCase):
 

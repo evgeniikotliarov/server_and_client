@@ -1,5 +1,5 @@
 import unittest
-import storage.data_storages.memory.UsersStorage as user_storage
+import storage.data_storages.memory.users_storage as user_storage
 
 class TestUsersStorage(unittest.TestCase):
 
