@@ -1,5 +1,5 @@
 import os.path
-from definitions import PUBLIC_FOLDER
+from settings import PUBLIC_FOLDER
 from util.constants.const_main import METHODS_ALLOWING_ACTION
 
 def file_exists(file_name):

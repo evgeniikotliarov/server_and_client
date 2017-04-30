@@ -1,6 +1,6 @@
 import unittest
 from server.file_router import *
-from definitions import *
+from settings import *
 import os.path
 
 class TestFileRouter(unittest.TestCase):

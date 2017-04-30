@@ -1,5 +1,5 @@
 from server.multipart import *
-from server.actions.register import *
+from server.actions.registration import *
 from server.actions.publish import *
 
 def get_action(request):

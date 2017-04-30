@@ -1,5 +1,5 @@
 import os.path
-from definitions import PUBLIC_FOLDER
+from settings import PUBLIC_FOLDER
 
 def file_exists(file_name):
     if is_allowed_directory(file_name):

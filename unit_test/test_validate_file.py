@@ -1,7 +1,7 @@
 import os.path
 import unittest
 
-from definitions import PUBLIC_FOLDER
+from settings import PUBLIC_FOLDER
 from server.router.path_validator import *
 
 
