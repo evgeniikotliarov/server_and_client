@@ -1,3 +1,4 @@
+ALLOW = b"Allow"
 ACCEPT = b"Accept"
 ACCEPT_CHARSET = b"Accept-Charset"
 ACCEPT_ENCODING = b"Accept-Encoding"
@@ -31,3 +32,5 @@ LOCATION = b"Location"
 SERVER = b"Server"
 SET_COOKIE = b"Set-Cookie"
 STATUS = b"Status"
+
+ALLOWED = b"GET, POST, PUT, DELETE, OPTIONS"

@@ -31,9 +31,6 @@ def is_multipart(request):
         return True
     return False
 
-def method_allows_action(request):
-    return request.method in METHODS_ALLOWING_ACTION
-
 def get_boundary(request):
     if is_multipart(request):
         content_type = request.headers[CONTENT_TYPE]

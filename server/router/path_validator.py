@@ -1,5 +1,6 @@
 import os.path
 from definitions import PUBLIC_FOLDER
+from util.constants.const_main import METHODS_ALLOWING_ACTION
 
 def file_exists(file_name):
     if is_allowed_directory(file_name):
@@ -18,3 +19,6 @@ def get_file(file_name):
     if file_exists(os.path.join(PUBLIC_FOLDER, strip_slash(file_name))):
         return os.path.join(PUBLIC_FOLDER, strip_slash(file_name))
     return 'not found' #TODO implement
+
+def method_allows_action(request):
+    return request.method in METHODS_ALLOWING_ACTION
