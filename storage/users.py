@@ -1,3 +1,4 @@
+
 class Users:
     def __init__(self, users_storage):
         self.users = users_storage

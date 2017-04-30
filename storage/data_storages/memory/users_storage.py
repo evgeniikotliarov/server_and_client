@@ -10,7 +10,6 @@ def create_user(username, password):
 def get_user(username):
     if username in users.keys():
         return users[username]
-    return None
 
 def get_all_users():
     return users
