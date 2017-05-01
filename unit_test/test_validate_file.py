@@ -3,38 +3,36 @@ import unittest
 
 from server.router.path_validator import *
 
+
 class TestValidateFile(unittest.TestCase):
     def test_is_directory_allowed(self):
-        file = 'styles/style.css'
-        result = is_allowed_directory(strip_slash(file))
+        file = b'styles/style.css'
+        result = is_allowed(strip_slash(file))
         self.assertTrue(result)
 
     def test_directory_is_not_allowed(self):
-        file = '../../index.html'
-        result = is_allowed_directory(strip_slash(file))
+        file = b'../../index.htransform_file_pathtml'
+        result = is_allowed(strip_slash(file))
         self.assertFalse(result)
 
     def test_file_exists(self):
-        file = '/index.html'
-        result = file_exists(get_public(strip_slash(file)))
-        self.assertTrue(result)
+        file = b'/index.html'
+        result = file_exists(transform_file_path(strip_slash(file)))
+        self.assertTrue(result) # TODO Redo, does two things
 
     def test_file_not_exists(self):
-        file = '/end.html'
-        result = file_exists(get_public(strip_slash(file)))
-        self.assertFalse(result)
+        file = b'/end.html'
+        result = file_exists(transform_file_path(strip_slash(file)))
+        self.assertFalse(result) # TODO does two things, redo
 
-    def test_get_file(self):
-        file = '/index.html'
-        file_path = get_public(strip_slash(file))
-        result = get_file(file)
-        self.assertEqual(result, file_path)
-
-def get_public(file_name):
-    return os.path.join(PUBLIC_FOLDER, file_name)
+    # def test_get_file(self):
+    #     file = b'/index.html'
+    #     file_path = transform_file_path(strip_slash(file))
+    #     result = get_file_path(file)
+    #     self.assertEqual(result, file_path) TODO Write proper test - this one does two things
 
 def strip_slash(file_name):
-    return file_name.strip('/')
+    return file_name.strip(b'/')
 
 if __name__ == '__main__':
     unittest.main()
