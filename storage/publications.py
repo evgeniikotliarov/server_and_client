@@ -1,3 +1,4 @@
+import server
 
 class Publications:
     def __init__(self, publication_storage):
@@ -18,3 +19,13 @@ class Publications:
 
     def get_all_publication(self):
         pass
+
+    def get_n_last_punlications(self, number=10):
+        publications = []
+        for i, publications in enumerate(self.storage.get_all_publications().values()):
+            if i > number:
+                break
+            publications.append(publication)
+        return publications
+
+PublicationsDAO = Publications(settings.CURRENT_PUBLICATIONS_STORAGE)

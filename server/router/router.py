@@ -1,17 +1,12 @@
-from util.constants.const_main import *
-import server.router.action_router as action_router
-import server.router.static_router as static_router
+from util.constants.misc import *
+from .path import *
+from .routes import routes
 
 def route(request):
     method = request.method
-    if is_action(method):
-        action_router.route(request)
-    elif is_static(method):
-        static_router.route(request)
-    #else TODO rhrow error - wtf he wants me to do
-
-def is_action(method):
-    return method in METHODS_ALLOWING_ACTION
-
-def is_static(method):
-    return method not in METHODS_ALLOWING_ACTION
+    validate_path(request.target)
+    path = get_filesystem_path(request.target)
+    if method in STATIC_METHODS:
+        routes[method](request)
+    elif method in ACTION_METHODS:
+        routes[path](request)

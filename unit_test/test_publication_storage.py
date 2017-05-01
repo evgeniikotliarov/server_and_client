@@ -10,7 +10,7 @@ class TestPublicationsStorage(unittest.TestCase):
 
     def test_get_publication(self):
         public = publication_storage.create_publication('Document', 'test', 'text')
-        all_publications = publication_storage.publications
+        all_publications = publication_storage._publications
         doc = all_publications[public.get_id()]
         self.assertEqual(public, doc)
 
