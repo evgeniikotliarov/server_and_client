@@ -1,5 +1,6 @@
 import socket
 
+SERVER = 'Some crappy server'
 CRLF = '\r\n'
 LF = '\n'
 
@@ -47,3 +48,6 @@ STATIC_METHODS = [GET, HEAD, OPTIONS]
 
 REGISTER = b'register'
 AUTH = b'auth'
+
+DEFAULT_MAX_AGE = 3600000
+HTTP_1_1 = 'HTTP/1.1'

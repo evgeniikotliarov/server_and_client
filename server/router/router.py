@@ -1,12 +1,10 @@
-from util.constants.misc import *
+from util.constants.const_main import *
 from .path import *
 from .routes import routes
 
-def route(request):
+
+def get_request_handler_route(request):
     method = request.method
     validate_path(request.target)
-    path = get_filesystem_path(request.target)
-    if method in STATIC_METHODS:
-        routes[method](request)
-    elif method in ACTION_METHODS:
-        routes[path](request)
+    # path = get_filesystem_path(request.target)
+    return routes[method]
