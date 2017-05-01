@@ -19,5 +19,5 @@ while True:
     if not request: raise Exception  # TODO proper error response
     request_handler = router.get_request_handler_route(request)
     response_builder = ResponseBuilder()
-    response = request_handler(request, response_builder)
+    response = request_handler(request, response_builder),get_response()
     connection.close()
