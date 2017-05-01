@@ -8,6 +8,7 @@ class Response:
         self.protocol = None
         self.headers = []
         self.body = None
+        self.redirect = None
 
     def set_code(self, code):
         self.code = code
