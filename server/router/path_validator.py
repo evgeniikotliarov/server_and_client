@@ -3,6 +3,7 @@ from settings import PUBLIC_FOLDER
 from util.constants.const_main import METHODS_ALLOWING_ACTION
 
 def file_exists(file_name):
+    file_name = '/index.html' if file_name == '/' else file_name
     if is_allowed_directory(file_name):
         return os.path.exists(file_name) and not os.path.isdir(file_name)
     return False

@@ -1,9 +1,7 @@
 import os.path
 import unittest
 
-from settings import PUBLIC_FOLDER
 from server.router.path_validator import *
-
 
 class TestValidateFile(unittest.TestCase):
     def test_is_directory_allowed(self):
@@ -31,7 +29,6 @@ class TestValidateFile(unittest.TestCase):
         file_path = get_public(strip_slash(file))
         result = get_file(file)
         self.assertEqual(result, file_path)
-
 
 def get_public(file_name):
     return os.path.join(PUBLIC_FOLDER, file_name)

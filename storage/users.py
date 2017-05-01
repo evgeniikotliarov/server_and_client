@@ -16,7 +16,7 @@ class Users:
         return self.users.get_all_users()
 
     def validate_user(self, username, password):
-        if self.__user_exists(username) and self.__passwords_march(username, password):
+        if self.__user_exists(username) and self.__passwords_match(username, password):
             return True
         raise ValueError('Username or Password mismatch')
 
