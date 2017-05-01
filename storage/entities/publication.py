@@ -1,4 +1,4 @@
- class Publication:
+class Publication:
     def __init__(self, author = None, title = "", text = "", attachments = None):
         self.author = author
         self.title = title
