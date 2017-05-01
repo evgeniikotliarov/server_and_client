@@ -3,6 +3,8 @@ import socket
 CRLF = '\r\n'
 LF = '\n'
 
+DOT = b'.'
+
 CRLF_BYTE = CRLF.encode()
 LF_BYTE = LF.encode()
 
@@ -31,13 +33,13 @@ socket_type = socket.SOCK_STREAM
 
 MULTIPART = b'multipart'
 
-POST = 'POST'
-PUT = 'PUT'
-PATCH = 'PATCH'
-DELETE = 'DELETE'
+POST = b'POST'
+PUT = b'PUT'
+PATCH = b'PATCH'
+DELETE = b'DELETE'
 
-GET = 'GET'
-HEAD = 'HEAD'
-OPTIONS = 'OPTIONS'
+GET = b'GET'
+HEAD = b'HEAD'
+OPTIONS = b'OPTIONS'
 
 METHODS_ALLOWING_ACTION = [POST, PUT, PATCH]

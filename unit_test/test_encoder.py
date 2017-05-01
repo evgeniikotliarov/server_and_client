@@ -1,5 +1,7 @@
 import unittest
-from server.url_encoder import *
+
+from server.form_encodigs.url_encoder import *
+
 
 class TestUrlEncoder(unittest.TestCase):
 

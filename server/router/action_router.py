@@ -1,8 +1,7 @@
-from server.multipart import *
-from server.actions.registration import *
-from server.actions.publish import *
+from server.form_encodings.multipart import *
 
-def get_action(request):
+
+def route(request):
     path = request.target
 
     if is_multipart(request):

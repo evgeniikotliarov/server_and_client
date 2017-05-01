@@ -1,4 +1,4 @@
-from storage.users import *
+from storage.users import UsersDAO
 from server.session import *
 class Auth:
     def __init__(self, username, password):
@@ -10,8 +10,8 @@ class Auth:
     def generate_session_id(self):
         if self.__validate_user():
             session_id = self.session.generate_id()
-            self.current_user = Users().get_user(self.username)
-            Users().add_session(self.current_user, session_id)
+            self.current_user = UsersDAO.get_user(self.username)
+            UsersDAO.add_session(self.current_user, session_id)
         return 'User not found'
 
     def get_current_user(self):
@@ -29,8 +29,8 @@ class Auth:
 
     def __validate_user(self):
         try:
-            Users().validate_user(self.username, self.password)
-            self.current_user = Users.get_user(self.username)
+            UsersDAO.validate_user(self.username, self.password)
+            self.current_user = UsersDAO.get_user(self.username)
             return True
         except ValueError:
             return False

@@ -1,4 +1,5 @@
 import time
+
 from util.constants.const_main import *
 
 def get_raw_request(connection, timeout=1):

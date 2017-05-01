@@ -2,7 +2,7 @@ import unittest
 
 from server.actions.authentification import *
 
-Users().create_user('vasya', 'pwd')
+UsersDAO.create_user('vasya', 'pwd')
 auth = Auth('vasya', 'pwd')
 auth2 = Auth('unknown', 'pwd2')
 class TestAuthentication(unittest.TestCase):
@@ -14,7 +14,7 @@ class TestAuthentication(unittest.TestCase):
     def test_current_user(self):
         generate_id(auth)
         current_user = auth.get_current_user()
-        self.assertEqual(Users().get_user('vasya'), current_user)
+        self.assertEqual(UsersDAO.get_user('vasya'), current_user)
 
     def test_user_not_found(self):
         result = generate_id(auth2)

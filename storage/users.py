@@ -1,6 +1,7 @@
-from storage.data_storages.memory import users_storage
+import settings
+
 class Users:
-    def __init__(self, storage = users_storage):
+    def __init__(self, storage):
         self.users = storage
 
     def create_user(self, username, password):
@@ -36,3 +37,5 @@ class Users:
 
 class UserCreationError(Exception):
     pass
+
+UsersDAO = Users(settings.CURRENT_USERS_STORAGE)

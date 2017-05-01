@@ -1,5 +1,5 @@
 
-def string_parser(query):
+def parse(query):
     query_pars = query.split('&')
     data = {}
     for entry in query_pars:
