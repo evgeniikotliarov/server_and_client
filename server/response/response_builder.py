@@ -1,22 +1,35 @@
-from datetime import datetime, tzinfo, timedelta
 from server.entities.response import Response
 from util.constants.headers import *
 from util.constants.const_main import *
-from uuid import uuid4
+from util.id_generator import generate_etag
+import util.files as Files
+import util.date as Date
+
 
 class ResponseBuilder:
-    def __init__(self):
-        self._response = Response()
+    def __init__(self, response=None):
+        self._response = response if response else Response()
         self.set_default_headers()
+
+    def get_response(self): return self._response
 
     def set_default_headers(self):
         self.set_protocol(HTTP_1_1)
-        self.set_date(self.get_current_date())
+        self.set_date(Date.get_formatted_date())
         self.set_server(SERVER)
 
     def set_code(self, code): self._response.code = code
 
     def set_message(self, msg): self._response.message = msg
+
+    def set_file_and_fileheaders(self, file_path):
+        file = Files.retrieve_file(file_path)
+        mime = Files.get_file_type(file_path)
+
+        self.set_content_length(len(file))
+        self.set_content_type(mime)
+        self.set_etag(generate_etag())
+        self.set_cache_control(DEFAULT_CACHE_CONTROL)  # TODO different cache-controls for different MIMES
 
     def set_protocol(self, proto): self._response.protocol = proto
 
@@ -26,9 +39,8 @@ class ResponseBuilder:
         allow = b"%s: %s" % (ALLOW, ALLOWED)
         self.add_header(allow)
 
-    def set_cache_control(self, age):
-        if age < 0: age = 0
-        cache_control = b"%s: max-age=%d" % (CACHE_CONTROL, age)
+    def set_cache_control(self, control):
+        cache_control = b"%s: %s" % (CACHE_CONTROL, control)
         self.add_header(cache_control)
 
     def set_connection(self, connection):
@@ -46,6 +58,10 @@ class ResponseBuilder:
     def set_content_length(self, length):
         content_length = b"%s: %d" % (CONTENT_LENGTH, length)
         self.add_header(content_length)
+
+    def set_content_type(self, ctype):
+        content_type = b"%s: %s" % (CONTENT_TYPE, ctype)
+        self.add_header(content_type)
 
     def set_date(self, date):
         _date = b'%s: %s' % (DATE, date)
@@ -77,23 +93,3 @@ class ResponseBuilder:
 
     def add_header(self, header):
         self._response.headers.append(header)
-
-    @staticmethod
-    def get_current_date():
-        now = datetime.now(GMT1())
-        formatted_now = now.strftime("%a, %d %b %Y %H:%M:%S %Z")
-        return formatted_now.encode()
-
-    @staticmethod
-    def generate_etag():
-        return str(uuid4())
-
-class GMT1(tzinfo):
-    def utcoffset(self, dt):
-        return timedelta(hours=0)
-
-    def dst(self, dt):
-        return timedelta(0)
-
-    def tzname(self, dt):
-        return "GMT"
