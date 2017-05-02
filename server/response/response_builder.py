@@ -16,7 +16,7 @@ class ResponseBuilder:
     def set_default_headers(self):
         self.set_protocol(HTTP_1_1)
         self.set_date(Date.get_formatted_date())
-        self.set_server(SERVER)
+        self.set_server(SERVER_NAME)
 
     def set_code(self, code): self._response.code = code
 

@@ -1,6 +1,6 @@
 import socket
 
-SERVER = 'Some crappy server'
+SERVER_NAME = b'Some crappy server'
 CRLF = '\r\n'
 LF = '\n'
 
