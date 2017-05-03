@@ -1,2 +1,2 @@
 def publish(multipart_fields):
-    pass
+    author = None

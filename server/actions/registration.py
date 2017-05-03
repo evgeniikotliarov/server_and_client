@@ -7,6 +7,6 @@ class Registration():
 
     def create(self):
         try:
-            return Users().create_user(self.username, self.password)
+            return UsersDAO.create_user(self.username, self.password)
         except UserCreationError as err:
             return str(err)
