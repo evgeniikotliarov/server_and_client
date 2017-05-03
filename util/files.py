@@ -7,5 +7,5 @@ def retrieve_file(file_path):
         return source.read()
 
 def get_file_type(file_path):
-    mime, encoding = mimetypes.guess_type(file_path)
-    return mime
+    mime, encoding = mimetypes.guess_type(file_path.decode())
+    return mime.encode()

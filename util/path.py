@@ -4,7 +4,7 @@ from settings import PUBLIC_FOLDER
 def validate_path(requested_path):
     path = get_filesystem_path(requested_path)
     if not file_exists(path) or not is_allowed(path):
-        raise Exception # TODO respond with error
+        pass # TODO respond with error
 
 def file_exists(file_name):
     return os.path.exists(file_name) and not os.path.isdir(file_name)
