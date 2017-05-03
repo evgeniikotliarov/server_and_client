@@ -2,7 +2,7 @@ from collections import OrderedDict
 from storage.entities.publication import Publication
 from util.id_generator import generate_id
 
-_publications = OrderDict()
+_publications = OrderedDict()
 
 def create_publication(author, title, text, attachment=None, unique_id=None):
     publication = Publication(author, title, text, attachment)

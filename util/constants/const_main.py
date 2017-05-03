@@ -5,6 +5,7 @@ CRLF = '\r\n'
 LF = '\n'
 
 DOT = b'.'
+SPACE = ' '
 
 CRLF_BYTE = CRLF.encode()
 LF_BYTE = LF.encode()

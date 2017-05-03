@@ -1,5 +1,4 @@
-from util.constants.const_main import *
-from .path import *
+from util.path import *
 from .routes import routes
 
 def get_request_handler_route(request):

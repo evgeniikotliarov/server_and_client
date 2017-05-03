@@ -1,7 +1,6 @@
-import os.path
 import unittest
 
-from server.router.path import *
+from util.path import *
 
 class TestValidateFile(unittest.TestCase):
     def test_is_directory_allowed(self):
@@ -13,6 +12,13 @@ class TestValidateFile(unittest.TestCase):
         file = b'../../index.html'
         result = is_allowed(strip_slashes(file))
         self.assertFalse(result)
+
+    def test_get_filesystem_path(self):
+        file = b'/index.html'
+        result = get_filesystem_path(file)
+        expected = b'/home/evgenii/projects/server_and_client/public/index.html'
+        self.assertEqual(result, expected)
+
 
     # def test_file_exists(self):
     #     file = b'/index.html'
