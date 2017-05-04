@@ -21,11 +21,11 @@ def do_get(request, response_builder):
     return response_builder
 
 
-def do_options(request, responsebuilder):
+def do_options(request, response_builder):
     pass
 
 def do_post(request, response_builder):
     pass
 
-def do_put(request, responsebuilder):
+def do_put(request, response_builder):
     pass
