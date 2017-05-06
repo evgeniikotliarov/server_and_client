@@ -1,6 +1,6 @@
 import unittest
 
-from server.actions.authentification import *
+from server.actions.auth import *
 
 UsersDAO.create_user('vasya', 'pwd')
 auth = Auth('vasya', 'pwd')

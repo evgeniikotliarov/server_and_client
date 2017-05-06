@@ -50,8 +50,9 @@ OPTIONS = b"OPTIONS"
 ACTION_METHODS = [POST, PUT, PATCH]
 STATIC_METHODS = [GET, HEAD, OPTIONS]
 
-REGISTER = b'register'
-AUTH = b'auth'
+REGISTER = b'/register'
+AUTH = b'/auth'
+PUBLISH = b'/publish'
 
 DEFAULT_CACHE_CONTROL = b"max-age=3600000"
 HTTP_1_1 = b'HTTP/1.1'

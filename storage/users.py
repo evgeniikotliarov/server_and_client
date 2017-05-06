@@ -30,7 +30,7 @@ class Users:
         if self.get_user(username).password == password:
             return True
         return False
-
+    @staticmethod
     def add_session(self, user_obj, session_id):
         user_obj.add_session(session_id)
         return 'Session id was added'

@@ -1,10 +1,15 @@
 from storage.users import UsersDAO
 from server.session import *
+
+
+def do_auth(request, response_builder):
+    print("Requested auth")
+
 class Auth:
     def __init__(self, username, password):
         self.username = username
         self.password = password
-        self.session = Session
+        self.session = Session()
         self.current_user = None
 
     def generate_session_id(self):
@@ -12,14 +17,15 @@ class Auth:
             session_id = self.session.generate_id()
             self.current_user = UsersDAO.get_user(self.username)
             UsersDAO.add_session(self.current_user, session_id)
-        return 'User not found'
+            return True
+        return 'user not found'
 
     def get_current_user(self):
         return self.current_user
 
-    def validate_session_id(self, id):
+    def validate_session_id(self, _id):
         valid_id = self.current_user.session
-        if id == valid_id:
+        if _id == valid_id:
             self.__update_session_id_age()
             return True
         return False

@@ -2,8 +2,8 @@ import unittest
 from storage.users import *
 
 
-def create(user, pwd):
-    return UsersDAO.create_user(user, pwd)
+def create(usr, pwd):
+    return UsersDAO.create_user(usr, pwd)
 
 username = 'user'
 password = 'password'
