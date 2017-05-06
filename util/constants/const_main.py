@@ -55,3 +55,7 @@ AUTH = b'auth'
 
 DEFAULT_CACHE_CONTROL = b"max-age=3600000"
 HTTP_1_1 = b'HTTP/1.1'
+
+DEFAULT_PATHS = {
+    b"/": b"/index.html"
+}
