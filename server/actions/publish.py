@@ -7,8 +7,8 @@ def do_publish():
 def publish(multipart_fields):
     author = None
 
-def parser_fields(multipart_fields):
 
+def parser_fields(multipart_fields):
     dict_parser_multipart_fields = {}
 
     for field in multipart_fields:

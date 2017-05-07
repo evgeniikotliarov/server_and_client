@@ -5,6 +5,7 @@ from server.session import *
 def do_auth(request, response_builder):
     print("Requested auth")
 
+
 class Auth:
     def __init__(self, username, password):
         self.username = username
