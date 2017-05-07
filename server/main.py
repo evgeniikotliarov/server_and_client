@@ -25,5 +25,6 @@ while True:
     response = response_transformer.transform_response(response_obj)
 
     connection.send(response)
-    connection.send(response_obj.file)
+    if response_obj.file:
+        connection.send(response_obj.file)
     connection.close()

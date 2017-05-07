@@ -2,8 +2,8 @@ from server.entities.response import Response
 from util.constants.headers import *
 from util.constants.const_main import *
 from util.id_generator import generate_etag
-import util.files as Files
-import util.date as Date
+import util.files as files
+import util.date as date
 
 
 class ResponseBuilder:
@@ -15,7 +15,7 @@ class ResponseBuilder:
 
     def set_default_headers(self):
         self.set_protocol(HTTP_1_1)
-        self.set_date(Date.get_formatted_date())
+        self.set_date(date.get_formatted_date())
         self.set_server(SERVER_NAME)
 
     def set_code(self, code): self._response.code = code
@@ -23,8 +23,8 @@ class ResponseBuilder:
     def set_message(self, msg): self._response.message = msg
 
     def set_file_and_fileheaders(self, file_path):
-        file = Files.retrieve_file(file_path)
-        mime = Files.get_file_type(file_path)
+        file = files.retrieve_file(file_path)
+        mime = files.get_file_type(file_path)
 
         self.set_content_length(len(file))
         self.set_content_type(mime)

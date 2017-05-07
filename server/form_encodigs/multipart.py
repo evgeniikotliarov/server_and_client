@@ -64,6 +64,7 @@ class MultipartField:
         self.content_type = content_type
         self.body = body
 
+    @staticmethod
     def _get_field_name(self, disposition):
         name_regex = get_disposition_name_regex()
         found = re.search(name_regex, disposition)
