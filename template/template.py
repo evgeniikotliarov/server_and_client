@@ -2,6 +2,7 @@ from template.code_builder import *
 from template.util import *
 import re
 
+
 class Template:
     def __init__(self, text):
         self._text = text
