@@ -49,6 +49,7 @@ def headers_to_dict(headers_list):
     return headers
 
 def parse_request_line(request):
+    print(request)
     found = re.findall(Regexes.get_request_regex(), request)
     found = found[0]
     if len(found) <= 0: return None

@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="shortcut icon" href="	" />
+		<link rel="shortcut icon" href="favicon.ico"/>
 		<link rel="stylesheet" href="styles/style.css" />
 		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 	</head>
@@ -10,6 +10,7 @@
 		<!-- Header -->
 			<header>
 				<nav class="menu">
+					<div class="search"><input type="search" placeholder="SEARCH"></div>
 					<ul>
 						<li><a href="index.html">Home</a></li>
 						<li><a href="registration.html">Registration</a></li>
@@ -20,45 +21,28 @@
 
 			<!-- Posts Block  -->
 
-			<br><br>
-			<div class="container">
-			<div class="posts">
-				<div class="index_post">
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel volutpat velit, et venenatis mi. Cras in urna elementum arcu iaculis pretium. Vestibulum convallis congue massa, ut aliquam nisl scelerisque id. Cras non mattis odio, non auctor lacus. Maecenas ac tortor dictum, pulvinar tortor et, accumsan nisi. Nullam pulvinar ultrices dapibus. Fusce at tempus dui. In hac habitasse platea dictumst. Praesent luctus neque vel molestie tempor. Aliquam nec orci elementum, hendrerit erat eget, fermentum justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam finibus, ipsum at facilisis consequat, orci enim tincidunt eros, at fermentum turpis tellus ac ligula. Aenean varius eget ante in bibendum. Suspendisse mollis, enim vel facilisis finibus, risus eros vehicula turpis, eget aliquet tellus urna et dolor.
-</p>
-					<ul>
-					<li><a  href="post.html">Edit post</a></li>
-					<li><button href="#">Show More</button></li>
-					</ul>
-				</div>
-				<div class="index_post">
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel volutpat velit, et venenatis mi. Cras in urna elementum arcu iaculis pretium. Vestibulum convallis congue massa, ut aliquam nisl scelerisque id. Cras non mattis odio, non auctor lacus. Maecenas ac tortor dictum, pulvinar tortor et, accumsan nisi. Nullam pulvinar ultrices dapibus. Fusce at tempus dui. In hac habitasse platea dictumst. Praesent luctus neque vel molestie tempor. Aliquam nec orci elementum, hendrerit erat eget, fermentum justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam finibus, ipsum at facilisis consequat, orci enim tincidunt eros, at fermentum turpis tellus ac ligula. Aenean varius eget ante in bibendum. Suspendisse mollis, enim vel facilisis finibus, risus eros vehicula turpis, eget aliquet tellus urna et dolor.
-</p>
-					<ul>
-					<li><a  href="post.html">Edit post</a></li>
-					<li><button href="#">Show More</button></li>
-					</ul>
-				</div>
-				<div class="index_post">
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel volutpat velit, et venenatis mi. Cras in urna elementum arcu iaculis pretium. Vestibulum convallis congue massa, ut aliquam nisl scelerisque id. Cras non mattis odio, non auctor lacus. Maecenas ac tortor dictum, pulvinar tortor et, accumsan nisi. Nullam pulvinar ultrices dapibus. Fusce at tempus dui. In hac habitasse platea dictumst. Praesent luctus neque vel molestie tempor. Aliquam nec orci elementum, hendrerit erat eget, fermentum justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam finibus, ipsum at facilisis consequat, orci enim tincidunt eros, at fermentum turpis tellus ac ligula. Aenean varius eget ante in bibendum. Suspendisse mollis, enim vel facilisis finibus, risus eros vehicula turpis, eget aliquet tellus urna et dolor.
-</p>
-					<ul>
-					<li><a  href="post.html">Edit post</a></li>
-					<li><button href="#">Show More</button></li>
-					</ul>
-				</div>
 
+			<div class="container" name='top'>
+				<div class="posts">
+					{% for publication in posts %}
+						<div class="index_post">
+							<div class="title"><h3>{{ publication.title }}</h3></div>
+							<center><img  src="{{ image }}" alt="Lorem Ipsum" style="width: 750px;"></center>
+							<p> {{ publication.text }} </p>
+							<ul>
+								<li><a href="{{ edit_post }}">Edit post</a></li>
+								<li><a href="{{ post_url }}">Show More</a></li>
+							</ul>
+						</div>
+					{% endfor %}
+				</div>
 			</div>
-			</div>
+		<footer class="footer">
+			<center><a href="#top"><img src="image/black-white-metro-up-icon.png" alt="up" style="height: 25px;"/></a></center>
+		<h3>Blog (c)</H3>
+		<p>	Bishkek 2017, tel.+996312345678</p>
+		</footer>
 	</body>
 
-	<!-- Footer -->
 
-	<footer class="footer">
-		<h3>Created by interns :) (c)</H3>
-		<p>	Bishkek 2017</p>
-	</footer>
 </html>

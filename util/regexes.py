@@ -3,7 +3,7 @@ def get_regex_date_format():
 
 def get_request_regex():
     methods = r'GET|POST|PUT|DELETE|OPTIONS'
-    host_symbols = r'[\w.\-\d/:]'
+    host_symbols = r"[\w\.\-\d/:'0-9]"
     space = r'\s'
     query = r'(?:[?&][^\s&]+)*'
     protocol = r'HTTP/.*'
