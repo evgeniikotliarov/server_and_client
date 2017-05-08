@@ -20,4 +20,4 @@ def get_raw_request(connection, timeout=1):
         except socket.error:
             pass # TODO error handling here
 
-    return b''.join(all_data)
+    return EMPTY_BYTE_STR.join(all_data)

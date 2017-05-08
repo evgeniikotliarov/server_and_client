@@ -12,10 +12,7 @@ def transform_request(raw_request):
     new_line = get_newline_char(raw_request)
 
     request_lines = raw_request.split(new_line)
-    if len(request_lines[0]) < 1:
-        request_lines = request_lines[1:]
-
-    request_line_text = request_lines[0]
+    status_line = request_lines[0]
     rest = request_lines[1:]
 
     headers, body = EMPTY_BYTE_STR, EMPTY_BYTE_STR
@@ -28,7 +25,7 @@ def transform_request(raw_request):
     elif has_headers(rest):
         headers = headers_to_dict(rest)
 
-    request_line = parse_request_line(request_line_text)
+    request_line = parse_status_line(status_line)
 
     return Request(
         request_line["method"],
@@ -48,9 +45,8 @@ def headers_to_dict(headers_list):
         headers[name] = value
     return headers
 
-def parse_request_line(request):
-    print(request)
-    found = re.findall(Regexes.get_request_regex(), request)
+def parse_status_line(status_line):
+    found = re.findall(Regexes.get_request_regex(), status_line)
     found = found[0]
     if len(found) <= 0: return None
     full, method, target, query, protocol = found
