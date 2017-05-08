@@ -65,7 +65,7 @@ class MultipartField:
         self.body = body
 
     @staticmethod
-    def _get_field_name(self, disposition):
+    def _get_field_name(disposition):
         name_regex = get_disposition_name_regex()
         found = re.search(name_regex, disposition)
         name = found.group(1)

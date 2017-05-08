@@ -28,7 +28,6 @@ class CodeBuilder:
         assert self._indentation_level == 0
         self.add_result_line()
         code = str(self)
-        print(code)
         exec(code, {}, contex)
         res = contex['result']
 

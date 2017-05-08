@@ -27,7 +27,7 @@
 					{% for publication in posts %}
 						<div class="index_post">
 							<div class="title"><h3>{{ publication.title }}</h3></div>
-							<center><img  src="{{ image }}" alt="Lorem Ipsum" style="width: 750px;"></center>
+							<center><img  src="{{ publication.attachments }}" alt="Lorem Ipsum" style="width: 750px;"></center>
 							<p> {{ publication.text }} </p>
 							<ul>
 								<li><a href="{{ edit_post }}">Edit post</a></li>
