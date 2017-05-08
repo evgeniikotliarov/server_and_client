@@ -4,6 +4,3 @@ def bytes_to_strings(*byte_strings):
             yield byte_str.decode()
         else:
             yield str(byte_str)
-
-a,b = bytes_to_strings(b'A','B')
-print(b'A')

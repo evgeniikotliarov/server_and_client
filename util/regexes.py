@@ -28,7 +28,7 @@ def get_content_type_regex():
     return r
 
 def get_multipart_body_regex():
-    r = br'Content-Disposition:\s?.*(?:[\r\n]{0,1}Content-Type:\s?.*[\r\n]{0,1})?.*[\r\n]*(.*)\r?'
+    r = br'Content-Disposition:\s?.*(?:[\r\n]{0,1}Content-Type:\s?.*[\r\n]{0,1})?.*[\r\n]*([\s\S]*)'
     return r
 
 def get_disposition_name_regex():
