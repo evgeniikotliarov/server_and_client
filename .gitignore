@@ -13,7 +13,7 @@
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 
-__pycache__
+
 
 # Gradle:
 .idea/**/gradle.xml
@@ -46,6 +46,7 @@ crashlytics-build.properties
 fabric.properties
 
 # Byte-compiled / optimized / DLL files
+*/__pycache__
 __pycache__/
 *.py[cod]
 *$py.class
@@ -142,3 +143,6 @@ ENV/
 
 # mkdocs documentation
 /site
+.idea/
+logs/
+public/image/
