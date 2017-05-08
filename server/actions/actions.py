@@ -33,16 +33,22 @@ def do_options(request, response_builder):
 
 def do_post(request, response_builder):
     path = request.target
-    action = actions[path]
+    action = post_actions[path]
     return action(request, response_builder)
 
 
 def do_put(request, response_builder):
-    pass
+    path = request.target
+    action = post_actions[path]
+    return action(request, response_builder)
 
 
-actions = {
+post_actions = {
     REGISTER: do_register,
     AUTH: do_auth,
+    PUBLISH: do_publish
+}
+
+put_actions = {
     PUBLISH: do_publish
 }
