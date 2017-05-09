@@ -1,6 +1,6 @@
 import socket
 
-SERVER_NAME = b"Some crappy server"
+SERVER_NAME = b"Server server"
 
 CRLF = '\r\n'
 LF = '\n'
@@ -19,7 +19,7 @@ WRITE = 'w'
 WRITE_PLUS = 'w+'
 MAKEFILE_BUFFER = 0
 
-EMPTY_STRING = ''
+EMPTY_STRING = b''
 EMPTY_BYTE_STR = b''
 
 
