@@ -1,6 +1,4 @@
-import settings
-from storage.users import UsersDAO
-from server.session import *
+from storage.entities.session import *
 
 class Sessions:
 

@@ -1,4 +1,3 @@
-import uuid
 import time
 from util.id_generator import generate_id
 

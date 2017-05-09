@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="shortcut icon" href="favicon.ico"/>
+		<link rel="shortcut icon" href="image/favicon.ico"/>
 		<link rel="stylesheet" href="styles/style.css" />
 		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 	</head>
@@ -13,8 +13,10 @@
 					<div class="search"><input type="search" placeholder="SEARCH"></div>
 					<ul>
 						<li><a href="index.html">Home</a></li>
-						<li><a href="registration.html">Registration</a></li>
-						<li><a href="login.html">Login</a></li>
+						<li><a href="registration.html">Get started</a></li>
+						<li><a href="login.html">Log in</a></li>
+						<li><a href="profile.html">Profile</a></li>
+						<li><a href="create_post.html">Create post</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -23,19 +25,30 @@
 
 
 			<div class="container" name='top'>
-				<div class="posts">
-					{% for publication in posts %}
-						<div class="index_post">
-							<div class="title"><h3>{{ publication.title }}</h3></div>
-							<center><img  src="{{ publication.attachments }}" alt="Lorem Ipsum" style="width: 750px;"></center>
-							<p> {{ publication.text }} </p>
-							<ul>
-								<li><a href="{{ edit_post }}">Edit post</a></li>
-								<li><a href="{{ post_url }}">Show More</a></li>
-							</ul>
-						</div>
-					{% endfor %}
+			<div class="posts">
+
+				{% for publication in posts %}
+
+				<div class="index_post">
+					<div class="title">
+						<h3><a href="{{ post_url }}" target="_blank">
+							{{ publication.title }}
+						</a></h3>
+					</div>
+					<center>
+						<a href="{{post_url}}">
+							<img src="{{ publication.attachments }}" alt="Lorem Ipsum" style="width: 750px;">
+						</a>
+					</center>
+					<p>{{ publication.text }}</p>
+					<ul>
+					<li><a href="{{ edit_post_url }}">Edit post</a></li>
+					</ul>
 				</div>
+
+				{% endfor %}
+
+			</div>
 			</div>
 		<footer class="footer">
 			<center><a href="#top"><img src="image/black-white-metro-up-icon.png" alt="up" style="height: 25px;"/></a></center>
@@ -43,6 +56,7 @@
 		<p>	Bishkek 2017, tel.+996312345678</p>
 		</footer>
 	</body>
+
 
 
 </html>

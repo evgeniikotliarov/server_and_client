@@ -1,8 +1,5 @@
-from storage.users import UsersDAO
-from server.session import *
-
 from server.form_encodigs.url_encoder import *
-import server.response.response_builder as set_cookie
+from storage.users import UsersDAO
 
 
 def do_auth(request, response_builder):

@@ -1,6 +1,7 @@
 import unittest
-from server.session import *
 import uuid
+
+from storage.entities.session import *
 
 session = Session()
 session.generate_id()
