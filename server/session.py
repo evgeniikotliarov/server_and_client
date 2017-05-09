@@ -1,15 +1,15 @@
 import uuid
 import time
+from util.id_generator import generate_id
+
 
 class Session:
-    def __init__(self):
-        self.id = None
-        self.age = None
+    def __init__(self, username, age):
+        self.id = generate_id()
+        self.username = username
+        self.age = age
+        self.born = self.update_born
 
-    def generate_id(self):
-        self.age = time.time()
-        self.id = uuid.uuid4()
-        return str(self.id)
-
-    def update_age(self):
-        self.age = time.time()
+    def update_born(self):
+        self.born = time.time()
+        return self.born

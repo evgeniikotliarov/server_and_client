@@ -35,7 +35,9 @@ class Users:
         user_obj.add_session(session_id)
         return 'Session id was added'
 
+UsersDAO = Users(settings.CURRENT_USERS_STORAGE)
+
+
 class UserCreationError(Exception):
     pass
 
-UsersDAO = Users(settings.CURRENT_USERS_STORAGE)
