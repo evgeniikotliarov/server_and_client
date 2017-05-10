@@ -20,4 +20,5 @@ def delete_publication(unique_id):
         del _publications[unique_id]
 
 def get_all_publication():
-    return _publications
+    for value in _publications.values():
+        yield value

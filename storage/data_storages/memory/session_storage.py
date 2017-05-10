@@ -1,9 +1,9 @@
-from storage.sessions import *
-
+from storage.entities.session import Session
+from util.id_generator import generate_id
 
 sessions = {}
 
-def create_sessions(session_id, username):
-    session = Session(session_id, username)
-    ses = session_id
-    return session_id
+def create_sessions(username, age):
+    session = Session(username, age)
+    session.set_id(generate_id())
+    return session.id
