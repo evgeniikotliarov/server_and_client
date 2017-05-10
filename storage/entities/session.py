@@ -9,6 +9,9 @@ class Session:
         self.age = age
         self.born = self.update_born
 
+    def set_id(self, _id):
+        self.id = _id
+
     def update_born(self):
         self.born = time.time()
         return self.born
