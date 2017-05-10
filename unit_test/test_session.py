@@ -5,6 +5,7 @@ from storage.entities.session import *
 
 session = Session()
 session.generate_id()
+
 class TestSession(unittest.TestCase):
 
     def test_generate_id(self):
