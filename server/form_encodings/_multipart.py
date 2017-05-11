@@ -8,7 +8,6 @@ def get_multipart_fields(request):
     # ---------------------------165903753415996587151253452    - in Content-type
     # -----------------------------165903753415996587151253452  - Actual boundary
     # -----------------------------165903753415996587151253452-- - Last boundary
-    if not is_multipart(request): return None
     boundary_in_header = get_boundary(request)
     boundary = b'--' + boundary_in_header
     boundary_finish = boundary + b'--'
@@ -25,20 +24,12 @@ def get_multipart_fields(request):
 
     return multipart_fields
 
-def is_multipart(request):
-    headers = request.headers
-    if has_content_type(request) and MULTIPART in headers[CONTENT_TYPE]:
-        return True
-    return False
-
 def get_boundary(request):
-    if is_multipart(request):
-        content_type = request.headers[CONTENT_TYPE]
-        reg = get_boundary_regex()
-        found = re.search(reg, content_type)
-        if found:
-            return found.group(1)
-    return None
+    content_type = request.headers[CONTENT_TYPE]
+    reg = get_boundary_regex()
+    found = re.search(reg, content_type)
+    if found:
+        return found.group(1)
 
 def has_content_type(request):
     return request.headers.__contains__(CONTENT_TYPE)
@@ -57,6 +48,7 @@ def wrap_multipart(multipart_field):
     file_bytes = found.group(1) if found else None
 
     return MultipartField(disposition, content_type, file_bytes)
+
 
 class MultipartField:
     def __init__(self, disposition, content_type, body):

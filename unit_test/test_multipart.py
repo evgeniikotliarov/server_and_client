@@ -1,5 +1,5 @@
 import unittest
-from server.form_encodings.multipart import *
+from server.form_encodings._multipart import *
 from server.requests.request_transformer import transform_request
 from util.request_samples import *
 

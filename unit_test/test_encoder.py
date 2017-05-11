@@ -1,6 +1,6 @@
 import unittest
 
-from server.form_encodings.url_encoder import *
+from server.form_encodings._url_encoder import *
 
 
 class TestUrlEncoder(unittest.TestCase):

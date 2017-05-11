@@ -1,4 +1,4 @@
-from server.form_encodings.multipart import get_multipart_fields
+from server.form_encodings._multipart import get_multipart_fields
 from storage.publications import *
 import util.constants.response_codes as codes
 
