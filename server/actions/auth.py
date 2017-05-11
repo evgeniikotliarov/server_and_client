@@ -7,7 +7,6 @@ def do_auth(request, response_builder):
     a_user = parse(request.body)
     username = a_user['user']
     password = a_user['password']
-    print("Prishel")
     valid_user = __validate_user(username, password)
     if valid_user:
         print("User valid")
