@@ -92,7 +92,7 @@ class ResponseBuilder:
         self.add_header(serv)
 
     def set_cookie(self, cookie):
-        coo = b"%s: %s" % (COOKIE, cookie)
+        coo = b"%s: %s" % (SET_COOKIE, cookie)
         self.add_header(coo)
 
     def add_header(self, header):
