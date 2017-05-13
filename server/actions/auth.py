@@ -1,6 +1,6 @@
 from storage.users import UsersDAO
 from storage.sessions import SessionsDAO
-from server.form_encodings._url_encoder import *
+from server.form_encodings.url_encoder import *
 import util.constants.response_codes as codes
 from util.redirect_generator import redirect_builder
 from util.constants.paths import INDEX_PAGE

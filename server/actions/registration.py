@@ -1,5 +1,5 @@
 from storage.users import *
-from server.form_encodings._url_encoder import parse
+from server.form_encodings.url_encoder import parse
 from storage.users import UsersDAO
 import util.constants.response_codes as codes
 

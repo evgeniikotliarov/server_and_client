@@ -32,5 +32,5 @@ def get_multipart_body_regex():
     return r
 
 def get_disposition_name_regex():
-    r = br'name="(.*)"'
+    r = br'name="(.*?)"'
     return r
