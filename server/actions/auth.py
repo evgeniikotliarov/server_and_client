@@ -2,6 +2,8 @@ from storage.users import UsersDAO
 from storage.sessions import SessionsDAO
 from server.form_encodings._url_encoder import *
 import util.constants.response_codes as codes
+from util.redirect_generator import redirect_builder
+from util.constants.paths import INDEX_PAGE
 
 def do_auth(request, response_builder):
     a_user = parse(request.body)
@@ -16,7 +18,8 @@ def do_auth(request, response_builder):
         created_code, created_message = codes.CREATED
         response_builder.set_code(created_code)
         response_builder.set_message(created_message)
-    #  TODO redirect
+        redirect = redirect_builder(INDEX_PAGE)
+        response_builder.set_redirect(redirect)
      #  TODO if not valid redirect
     return response_builder
 
