@@ -31,9 +31,6 @@ def get_boundary(request):
     if found:
         return found.group(1)
 
-def has_content_type(request):
-    return request.headers.__contains__(CONTENT_TYPE)
-
 def wrap_multipart(multipart_field):
     disposition_regex = get_content_disposition_regex()
     found = re.search(disposition_regex, multipart_field)
