@@ -1,4 +1,4 @@
-import settings
+from storage.data_storages.memory import publications_storage
 
 class Publications:
     def __init__(self, publication_storage):
@@ -21,12 +21,11 @@ class Publications:
         return self.storage.get_all_publications
 
     def get_n_last_punlications(self, number=10):
-        publications = []
+
         all_publications = self.storage.get_all_publications()
-        for i, publication in enumerate(all_publications.values()):
+        for i, publ_id in enumerate(reversed(all_publications)):
             if i > number:
                 break
-            publications.append(publication)
-        return publications
+            yield all_publications[publ_id]
 
-PublicationsDAO = Publications(settings.CURRENT_PUBLICATIONS_STORAGE)
+PublicationsMemoryDAO = Publications(publications_storage)

@@ -10,15 +10,18 @@ def create_publication(author, title, text, attachment=None, unique_id=None):
     _publications[unique_id] = publication
     return publication
 
+
 def get_publication(unique_id):
     if unique_id in _publications.keys():
         return _publications[unique_id]
     return None
 
+
 def delete_publication(unique_id):
     if unique_id in _publications.keys():
         del _publications[unique_id]
 
+
 def get_all_publication():
-    for value in _publications.values():
-        yield value
+    for key in reversed(_publications):
+        yield _publications[key]
