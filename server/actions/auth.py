@@ -1,12 +1,12 @@
 from storage.users import UsersDAO
 from storage.sessions import SessionsDAO
-from server.form_encodings.url_encoder import *
+from server.form_encodings.url_encoded import *
 import util.constants.response_codes as codes
 from util.redirect_generator import redirect_builder
 from util.constants.paths import INDEX_PAGE
 
 def do_auth(request, response_builder):
-    a_user = parse(request.body)
+    a_user = parse_url_encoded(request.body)
     username = a_user['user']
     password = a_user['password']
     valid_user = __validate_user(username, password)

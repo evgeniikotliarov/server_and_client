@@ -1,6 +1,6 @@
 from util.strings import ensure_string
 
-def parse(query):
+def parse_url_encoder(query):
     query = next(ensure_string(query))
     query_pars = query.split('&')
     data = {}
