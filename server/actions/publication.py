@@ -7,7 +7,6 @@ from util.files import *
 from util.id_generator import generate_id
 from util.strings import ensure_string
 from util.constants.paths import *
-from util.redirect_generator import redirect_builder
 
 
 def do_publish(request, response_builder):
@@ -21,11 +20,11 @@ def do_publish(request, response_builder):
 
     PublicationsMemoryDAO.create_publication("Author", title, text, attachment)
 
-    created_code, created_message = codes.CREATED
-    response_builder.set_code(created_code)
-    response_builder.set_message(created_message)
+    code, message = codes.SEE_OTHER
+    response_builder.set_code(code)
+    response_builder.set_message(message)
 
-    response_builder.set_redirect(redirect_builder(INDEX_PAGE))
+    response_builder.set_location(INDEX_PAGE.encode())
 
     return response_builder
 
