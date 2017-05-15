@@ -1,5 +1,5 @@
 import unittest
-from server.actions.registration import *
+from server.actions.publish import *
 
 
 username = 'user'

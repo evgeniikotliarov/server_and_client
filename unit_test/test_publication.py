@@ -9,17 +9,17 @@ class TestPublication(unittest.TestCase):
         title = [str(i) for i in range(0,10)]
         text = [str(i) for i in range(0,20)]
         for i in range(1,21):
-            PublicationsDAO.create_publication(author, title, text)
+            PublicationsMemoryDAO.create_publication(author, title, text)
 
 
     def test_get_n_last_publication(self):
         self.test_generate_publication()
-        result = PublicationsDAO.get_n_last_publications(10)
+        result = PublicationsMemoryDAO.get_n_last_publications(10)
         self.assertTrue(isinstance(result[0], Publication))
 
     def test_quantity_publication(self):
         self.test_generate_publication()
-        result = len(PublicationsDAO.get_n_last_publications(9))
+        result = len(PublicationsMemoryDAO.get_n_last_publications(9))
         self.assertEqual(result, 10)
 
 
