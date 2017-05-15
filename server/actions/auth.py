@@ -1,23 +1,23 @@
 from storage.users import UsersDAO
 from storage.sessions import SessionsDAO
-from server.form_encodings.url_encoded import *
+from server.form_encodings.decoder import decode_body
 import util.constants.response_codes as codes
 from util.redirect_generator import redirect_builder
 from util.constants.paths import INDEX_PAGE
 
 def do_auth(request, response_builder):
-    a_user = parse_url_encoded(request.body)
+    a_user = decode_body(request.body)
     username = a_user['user']
     password = a_user['password']
     valid_user = __validate_user(username, password)
     if valid_user:
-        print("User valid")
         session_id = SessionsDAO.create_session(username, 12312).encode()
-        print(session_id)
         response_builder.set_cookie(b"session=%s" % session_id)  # TODO COOKIE EXPIRATION
+
         created_code, created_message = codes.CREATED
         response_builder.set_code(created_code)
         response_builder.set_message(created_message)
+
         redirect = redirect_builder(INDEX_PAGE)
         response_builder.set_redirect(redirect)
      #  TODO if not valid redirect
