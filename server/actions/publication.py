@@ -7,6 +7,7 @@ from util.files import *
 from util.id_generator import generate_id
 from util.strings import ensure_string
 from util.constants.paths import *
+from util.redirect_generator import redirect_builder
 
 
 def do_publish(request, response_builder):
@@ -24,12 +25,22 @@ def do_publish(request, response_builder):
     response_builder.set_code(created_code)
     response_builder.set_message(created_message)
 
+    response_builder.set_redirect(redirect_builder(INDEX_PAGE))
+
     return response_builder
 
 
 def do_delete(request, response_builder):
-    pass
+    _id = decode_body(request.body)["id"]
+    PublicationsMemoryDAO.delete_publication(_id)
 
+    code, message = codes.ACCEPTED
+    response_builder.set_code(code)
+    response_builder.set_message(message)
+
+    response_builder.set_redirect(redirect_builder(INDEX_PAGE))
+
+    return response_builder
 
 def save_attachment(attachment):
     _id = generate_id()
