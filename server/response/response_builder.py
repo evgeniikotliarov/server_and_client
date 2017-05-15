@@ -24,8 +24,6 @@ class ResponseBuilder:
 
     def set_message(self, msg): self._response.message = msg
 
-    def set_redirect(self): self._response.redirect = redirect
-
     def set_file_and_fileheaders(self, file_path):
         file = get_html(file_path)
         mime = files.get_file_type(file_path)
