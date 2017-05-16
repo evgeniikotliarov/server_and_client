@@ -1,12 +1,10 @@
-from storage.publications import *
 import util.constants.response_codes as codes
-from util.constants.headers import COOKIE
-
+from paths import *
 from server.form_encodings.decoder import decode_body
+from storage.publications import *
 from util.files import *
 from util.id_generator import generate_id
 from util.strings import ensure_string
-from util.constants.paths import *
 
 
 def do_publish(request, response_builder):

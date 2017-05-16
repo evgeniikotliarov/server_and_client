@@ -1,11 +1,9 @@
-import socket
 import server.requests.request_parser as request_parser
 import server.requests.request_transformer as request_transformer
-from server.router import router
-from server.response.response_builder import *
 import server.response.response_transformer as response_transformer
-from logs.logger import log_request, log_response
-
+from server.logger import log_request, log_response
+from server.response.response_builder import *
+from server.router import router
 
 socket_server = socket.socket(socket_family, socket_type)
 socket_server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)

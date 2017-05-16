@@ -1,8 +1,9 @@
-from storage.users import UsersDAO
-from storage.sessions import SessionsDAO
-from server.form_encodings.decoder import decode_body
 import util.constants.response_codes as codes
-from util.constants.paths import INDEX_PAGE
+from paths import INDEX_PAGE
+from server.form_encodings.decoder import decode_body
+from storage.sessions import SessionsDAO
+from storage.users import UsersDAO
+
 
 def do_auth(request, response_builder):
     a_user = decode_body(request)
@@ -16,7 +17,7 @@ def do_auth(request, response_builder):
         code, message = codes.SEE_OTHER
         response_builder.set_code(code)
         response_builder.set_message(message)
-        response_builder.set_location(INDEX_PAGE)
+        response_builder.set_location(INDEX_PAGE.encode())
 
      #  TODO if not valid redirect
     return response_builder
@@ -24,7 +25,6 @@ def do_auth(request, response_builder):
 def __validate_user(username, password):
     try:
         UsersDAO.validate_user(username, password)
-        current_user = UsersDAO.get_user(username)
         return True
     except ValueError:
         return False

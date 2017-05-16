@@ -18,6 +18,7 @@ READ_PLUS = 'r+'
 WRITE = 'w'
 WRITE_PLUS = 'w+'
 MAKEFILE_BUFFER = 0
+APPENT_BYTE = 'ab'
 
 EMPTY_STRING = b''
 EMPTY_BYTE_STR = b''

@@ -1,8 +1,9 @@
-from util.files import retrieve_file, retrieve_file_buffered
-from template.template import Template
+from paths import *
 from storage.publications import PublicationsMemoryDAO
-from util.constants.paths import *
 from template.compiled_templates import index_template
+from template.template import Template
+from util.files import retrieve_file, retrieve_file_buffered
+
 
 def get_html(path):
     if isHtml(path):
