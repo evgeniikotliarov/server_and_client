@@ -20,5 +20,8 @@ routes = {
     },
     PATCH: {
         PUBLISH: do_publish()
+    },
+    DELETE: {
+        do_delete()
     }
 }
