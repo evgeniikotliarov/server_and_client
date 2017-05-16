@@ -5,7 +5,7 @@ from util.constants.paths import INDEX_PAGE
 
 
 def do_register(request, response_builder):
-    parse_request = decode_body(request.body)
+    parse_request = decode_body(request)
     name = parse_request["user"]
     password = parse_request["password"]
 

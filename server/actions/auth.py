@@ -5,7 +5,7 @@ import util.constants.response_codes as codes
 from util.constants.paths import INDEX_PAGE
 
 def do_auth(request, response_builder):
-    a_user = decode_body(request.body)
+    a_user = decode_body(request)
     username = a_user['user']
     password = a_user['password']
     valid_user = __validate_user(username, password)
