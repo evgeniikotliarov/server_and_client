@@ -38,6 +38,7 @@ class Users:
 UsersDAO = Users(users_storage)
 
 
+
 class UserCreationError(Exception):
     pass
 
