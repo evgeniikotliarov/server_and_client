@@ -1,4 +1,4 @@
-import settings
+from storage.data_storages.memory import users_storage
 
 class Users:
     def __init__(self, storage):
@@ -35,7 +35,7 @@ class Users:
         user_obj.add_session(session_id)
         return 'Session id was added'
 
-UsersDAO = Users(settings.CURRENT_USERS_STORAGE)
+UsersDAO = Users(users_storage)
 
 
 class UserCreationError(Exception):
