@@ -1,3 +1,6 @@
+from util.constants.const_main import *
+from util.constants.headers import *
+
 def get_regex_date_format():
     return r'\w{3},\s\d{2}\s\w{3}\s\d{4}\s\d{2}:\d{2}:\d{2}\s[A-Z]{3}'
 
@@ -33,4 +36,7 @@ def get_multipart_body_regex():
 
 def get_disposition_name_regex():
     r = br'name="(.*?)"'
+    return r
+def get_session_regex():
+    r = br'session=(.*)\s?'
     return r

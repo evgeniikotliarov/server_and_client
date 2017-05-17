@@ -1,6 +1,6 @@
 import mimetypes
 
-from settings import PUBLIC_FOLDER
+from paths import PUBLIC_FOLDER
 from .constants.const_main import *
 from os.path import join
 

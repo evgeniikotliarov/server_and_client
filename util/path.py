@@ -1,6 +1,6 @@
 import os.path
 from util.strings import ensure_string
-from settings import PUBLIC_FOLDER
+from paths import PUBLIC_FOLDER
 
 
 def validate_path(requested_path):

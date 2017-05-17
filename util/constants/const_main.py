@@ -2,6 +2,7 @@ import socket
 
 SERVER_NAME = b"Server server"
 
+SESSION = b'session'
 CRLF = '\r\n'
 LF = '\n'
 SPACE = ' '
