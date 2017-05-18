@@ -1,8 +1,9 @@
 from util.constants.const_main import *
 import os
+from paths import LOGS_FOLDER
 
-current_folder = os.path.dirname(os.path.abspath(__file__))
-logs_file = os.path.join(current_folder, 'logs.txt')
+
+logs_file = os.path.join(LOGS_FOLDER, 'logs.txt')
 
 
 def log(message):

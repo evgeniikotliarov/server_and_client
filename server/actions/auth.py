@@ -3,6 +3,7 @@ from paths import INDEX_PAGE
 from server.form_encodings.decoder import decode_body
 from storage.sessions import SessionsDAO
 from storage.users import UsersDAO
+from util.constants.const_main import SESSION
 
 
 def do_auth(request, response_builder):
@@ -12,7 +13,7 @@ def do_auth(request, response_builder):
     valid_user = __validate_user(username, password)
     if valid_user:
         session_id = SessionsDAO.create_session(username, 12312).encode()
-        response_builder.set_cookie(b"session=%s" % session_id)  # TODO COOKIE EXPIRATION
+        response_builder.set_cookie(b"%s=%s" % (SESSION, session_id))  # TODO COOKIE EXPIRATION
 
         code, message = codes.SEE_OTHER
         response_builder.set_code(code)

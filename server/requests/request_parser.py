@@ -2,7 +2,7 @@ import time
 
 from util.constants.const_main import *
 
-def get_raw_request(connection, timeout=1):
+def get_raw_request(connection, timeout=0.3):
     connection.setblocking(0)
     all_data = []
     start = time.time()
