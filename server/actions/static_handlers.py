@@ -17,7 +17,7 @@ def do_head(request, response_builder):
 def do_get(request, response_builder):
     response_builder = do_head(request, response_builder)
     source = get_filesystem_path(request.target)
-    response_builder.set_file_and_fileheaders(source, request.get_session())
+    response_builder.set_file_and_fileheaders(source, request.get_session().decode())
     return response_builder
 
 
