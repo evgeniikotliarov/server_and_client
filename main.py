@@ -5,6 +5,8 @@ from server.logger import log_request, log_response
 from server.response.response_builder import *
 from server.router import router
 
+
+
 socket_server = socket.socket(socket_family, socket_type)
 socket_server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 socket_server.bind((HOST, PORT))
