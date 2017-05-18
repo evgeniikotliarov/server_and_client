@@ -3,6 +3,8 @@ import socket
 SERVER_NAME = b"Server server"
 
 SESSION = b'session'
+SESSION_DEFAULT_AGE = 3600 * 24 * 30  #1 month
+
 CRLF = '\r\n'
 LF = '\n'
 SPACE = ' '
