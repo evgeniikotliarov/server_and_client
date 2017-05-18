@@ -36,11 +36,18 @@ class Template:
             condition = self._do_expr(tokens[1])
             self.builder.add_line("if %s:" % condition)
             self.builder.indent()
+
+        if tokens[0] == ELSE:
+            self.ensure_tokens_length(tokens, 1)
+            self.builder.add_line("else:")
+            self.builder.dedent()
+
         elif tokens[0] == FOR:
             self.ensure_tokens_length(tokens, 4)
             variable, loop_target = tokens[1], tokens[3]
             self.builder.add_line("for %s in %s:" % (variable, loop_target))
             self.builder.indent()
+
         elif tokens[0].startswith('end'):
             # TODO validation
             self.builder.dedent()
