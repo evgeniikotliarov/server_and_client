@@ -1,9 +1,11 @@
 from storage.entities.session import Session
-from util.id_generator import generate_id
 
-sessions = {}
+_sessions = {}
 
 def create_sessions(username, age):
     session = Session(username, age)
-    session.set_id(generate_id())
-    return session.id
+    _sessions[session.get_id()] = session
+    return session.get_id
+
+def get_session(_id):
+    return _sessions[_id] if _id in _sessions else None

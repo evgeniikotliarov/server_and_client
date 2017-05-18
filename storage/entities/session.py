@@ -3,15 +3,23 @@ from util.id_generator import generate_id
 
 
 class Session:
-    def __init__(self, username, age):
-        self.id = generate_id()
+    def __init__(self, username, max_age):
+        self._id = generate_id()
         self.username = username
-        self.age = age
-        self.born = self.update_born
+        self.max_age = max_age
+        self.born = self.refresh
 
-    def set_id(self, _id):
-        self.id = _id
+    def is_alive(self):
+        now = time.time()
+        if now - self.born > self.max_age:
+            return False
+        else:
+            self.refresh()
+            return True
 
-    def update_born(self):
+    def get_id(self):
+        return self._id
+
+    def refresh(self):
         self.born = time.time()
         return self.born
