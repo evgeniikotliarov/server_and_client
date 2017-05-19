@@ -9,7 +9,7 @@ session.generate_id()
 class TestSession(unittest.TestCase):
 
     def test_generate_id(self):
-        self.assertTrue(type(session.id) is uuid.UUID)
+        self.assertTrue(type(session._id) is uuid.UUID)
         self.assertTrue(session.age, time.time())
 
     def test_update_session_age(self):

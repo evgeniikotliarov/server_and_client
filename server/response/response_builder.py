@@ -2,7 +2,7 @@ from server.entities.response import Response
 from util.constants.headers import *
 from util.constants.const_main import *
 from util.id_generator import generate_etag
-from server.router.views_router import get_html
+from server.router.views_router import get_response_files
 
 import util.files as files
 import util.date as date
@@ -24,8 +24,8 @@ class ResponseBuilder:
 
     def set_message(self, msg): self._response.message = msg
 
-    def set_file_and_fileheaders(self, file_path):
-        file = get_html(file_path)
+    def set_file_and_fileheaders(self, file_path, session=None):
+        file = get_response_files(file_path, session)
         mime = files.get_file_type(file_path)
 
         self.set_content_length(len(file))
