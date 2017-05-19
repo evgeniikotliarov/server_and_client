@@ -1,7 +1,8 @@
 import util.constants.response_codes as codes
-from paths import INDEX_PAGE
+from paths import LOGIN_PAGE
 from server.form_encodings.decoder import decode_body
 from storage.users import UsersDAO
+from util.redirect import do_redirect
 
 
 def do_register(request, response_builder):
@@ -11,9 +12,4 @@ def do_register(request, response_builder):
 
     UsersDAO.create_user(name, password)
 
-    code, message = codes.SEE_OTHER
-    response_builder.set_code(code)
-    response_builder.set_message(message)
-    response_builder.set_location(INDEX_PAGE.encode())
-
-    return response_builder
+    return do_redirect(LOGIN_PAGE, response_builder)

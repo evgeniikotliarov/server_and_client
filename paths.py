@@ -4,6 +4,8 @@ join = os.path.join
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 INDEX_PAGE = '/index.html'
+LOGIN_PAGE = '/login.html'
+PUBLICATION_PAGE = '/publication.html'
 
 PUBLIC_FOLDER = join(ROOT_PATH, 'public')
 

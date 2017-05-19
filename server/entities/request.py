@@ -17,7 +17,7 @@ class Request:
         if CONNECTION in self.headers:
             return self.headers[CONNECTION]
 
-    def get_session(self):
+    def get_session_id(self):
         if self.session:
             return self.session
         elif COOKIE in self.headers:
