@@ -5,7 +5,7 @@ class Publications:
         self.storage = publication_storage
 
     def create_publication(self, author, title, text, attachments=None, unique_id=None):
-        self.storage.create_publication(author, title, text, attachments, unique_id=unique_id)
+        return self.storage.create_publication(author, title, text, attachments, unique_id=unique_id)
 
     def delete_publication(self, _id):
         self.storage.delete_publication(_id)

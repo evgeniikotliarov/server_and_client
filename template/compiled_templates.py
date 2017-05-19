@@ -6,3 +6,7 @@ from util.path import get_filesystem_path
 _index_data = retrieve_file(get_filesystem_path(INDEX_PAGE))
 index_template = Template(_index_data)
 index_template.compile()
+
+_publication_data = retrieve_file(get_filesystem_path(PUBLICATION_PAGE))
+publication_template = Template(_publication_data)
+publication_template.compile()
