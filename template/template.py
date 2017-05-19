@@ -12,6 +12,8 @@ class Template:
 
     def compile(self):
         for token in self.tokens:
+            token = token.strip(SPACING_CHARS)
+            if not token: continue
             if is_expression(token):
                 result = self.transform_expr(token)
                 self._buffer.append(to_string(result))
@@ -40,7 +42,7 @@ class Template:
         if tokens[0] == ELSE:
             self.ensure_tokens_length(tokens, 1)
             self.builder.add_line("else:")
-            self.builder.dedent()
+            self.builder.indent()
 
         elif tokens[0] == FOR:
             self.ensure_tokens_length(tokens, 4)
@@ -76,6 +78,7 @@ class Template:
             return "%s(%s)" % (func, var)
 
     def _flush_buffer(self):
+        if not self._buffer: return 
         buf = ', '.join(self._buffer)
         self.builder.add_line(self.builder.extend_result(buf))
         self._buffer = []

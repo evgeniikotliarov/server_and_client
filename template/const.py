@@ -8,3 +8,5 @@ IF = 'if'
 FOR = 'for'
 END = 'end'
 ELSE = 'else'
+
+SPACING_CHARS = 'r\n\t'
