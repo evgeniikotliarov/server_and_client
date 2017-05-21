@@ -17,7 +17,7 @@ class Publications:
     def get_publication(self, _id):
         return self.storage.get_publication(_id)
 
-    def get_all_publication(self):
+    def get_all_publications(self):
         return self.storage.get_all_publications
 
     def get_n_last_punlications(self, number=10):

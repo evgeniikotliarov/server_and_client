@@ -35,7 +35,7 @@ class Users:
         user_obj.add_session(session_id)
         return 'Session id was added'
 
-UsersDAO = Users(users_storage)
+UsersMemoryDAO = Users(users_storage)
 
 
 

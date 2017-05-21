@@ -11,5 +11,5 @@ class Sessions:
         return self.storage.get_session(session_id)
 
 
-SessionsDAO = Sessions(session_storage)
+SessionsMemoryDAO = Sessions(session_storage)
 
