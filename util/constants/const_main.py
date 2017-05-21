@@ -57,10 +57,9 @@ STATIC_METHODS = [GET, HEAD, OPTIONS]
 REGISTER = b'/register'
 AUTH = b'/auth'
 PUBLISH = b'/publish'
+PUBLICATION = b'/publication.html'
+USERPAGE = b'/profile.html'
+INDEX = b'/index.html'
 
 DEFAULT_CACHE_CONTROL = b"max-age=3600000"
 HTTP_1_1 = b'HTTP/1.1'
-
-DEFAULT_PATHS = {
-    b"/": b"/index.html"
-}

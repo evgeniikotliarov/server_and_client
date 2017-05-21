@@ -24,17 +24,6 @@ class ResponseBuilder:
 
     def set_message(self, msg): self._response.message = msg
 
-    def set_file_and_fileheaders(self, file_path, session=None):
-        file = get_response_files(file_path, session)
-        mime = files.get_file_type(file_path)
-
-        self.set_content_length(len(file))
-        self.set_content_type(mime)
-        self.set_etag(generate_etag()) # TODO Etags are generated every time file is requested. Change it to hashing
-        self.set_cache_control(DEFAULT_CACHE_CONTROL)  # TODO different cache-controls for different MIMES
-
-        self._response.body = file
-
     def set_protocol(self, proto): self._response.protocol = proto
 
     def set_body(self, body): self._response.body = body

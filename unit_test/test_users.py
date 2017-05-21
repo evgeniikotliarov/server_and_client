@@ -3,7 +3,7 @@ from storage.users import *
 
 
 def create(usr, pwd):
-    return UsersDAO.create_user(usr, pwd)
+    return UsersMemoryDAO.create_user(usr, pwd)
 
 username = 'user'
 password = 'password'
@@ -18,7 +18,7 @@ class TestUsers(unittest.TestCase):
         self.assertEqual(user.password, password)
 
     def test_get_user(self):
-        self.assertEqual(UsersDAO.get_user(username), user)
+        self.assertEqual(UsersMemoryDAO.get_user(username), user)
 
     def test_user_already_exists(self):
         with self.assertRaises(UserCreationError) as context:
@@ -26,20 +26,20 @@ class TestUsers(unittest.TestCase):
         self.assertTrue('User already exist' in str(context.exception))
 
     def test_get_all_users(self):
-        users = UsersDAO.get_all_users()
+        users = UsersMemoryDAO.get_all_users()
         self.assertTrue(user in users.values())
 
     def test_validate_user(self):
-        result = UsersDAO.validate_user(username, password)
+        result = UsersMemoryDAO.validate_user(username, password)
         self.assertTrue(result)
 
     def test_user_not_validated(self):
         with self.assertRaises(ValueError) as context:
-            UsersDAO.validate_user('user1', 'password1')
+            UsersMemoryDAO.validate_user('user1', 'password1')
         self.assertTrue('Username or password mismatch' in str(context.exception))
 
     def add_session(self):
-        UsersDAO.add_session(user, session_id)
+        UsersMemoryDAO.add_session(user, session_id)
         self.assertEqual(user.session, session_id)
 
 if __name__ == '__main__':
