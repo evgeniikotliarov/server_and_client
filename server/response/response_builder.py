@@ -2,7 +2,6 @@ from server.entities.response import Response
 from util.constants.headers import *
 from util.constants.const_main import *
 from util.id_generator import generate_etag
-from server.router.views_router import get_response_files
 
 import util.files as files
 import util.date as date

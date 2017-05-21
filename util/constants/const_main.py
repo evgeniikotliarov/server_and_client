@@ -60,6 +60,7 @@ PUBLISH = b'/publish'
 PUBLICATION = b'/publication.html'
 USERPAGE = b'/profile.html'
 INDEX = b'/index.html'
+STATIC = b''
 
 DEFAULT_CACHE_CONTROL = b"max-age=3600000"
 HTTP_1_1 = b'HTTP/1.1'

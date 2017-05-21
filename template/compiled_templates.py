@@ -10,3 +10,7 @@ index_template.compile()
 _publication_data = retrieve_file(get_filesystem_path(PUBLICATION_PAGE))
 publication_template = Template(_publication_data)
 publication_template.compile()
+
+_profile_data = retrieve_file(get_filesystem_path(PROFILE_PAGE))
+profile_template = Template(_profile_data)
+profile_template.compile()

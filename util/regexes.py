@@ -40,3 +40,9 @@ def get_disposition_name_regex():
 def get_session_regex():
     r = br'session=(.*)\s?'
     return r
+
+def get_template_tokenizer_regex():
+    CONTROL = "{%.*?%}"
+    EXPRESSIONS = "{{.*?}}"
+    r = "(?s)({control}|{expressions})".format(control=CONTROL, expressions=EXPRESSIONS)
+    return r

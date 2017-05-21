@@ -1,5 +1,4 @@
 from template.code_builder import *
-from template.util import *
 import re
 
 
@@ -78,15 +77,34 @@ class Template:
             return "%s(%s)" % (func, var)
 
     def _flush_buffer(self):
-        if not self._buffer: return 
+        if not self._buffer: return
         buf = ', '.join(self._buffer)
         self.builder.add_line(self.builder.extend_result(buf))
         self._buffer = []
 
-CONTROL = "{%.*?%}"
-EXPRESSIONS = "{{.*?}}"
-reg = "(?s)({control}|{expressions})".format(control=CONTROL, expressions=EXPRESSIONS)
+
 
 def tokenize(text):
+    from util.regexes import get_template_tokenizer_regex
+    reg = get_template_tokenizer_regex()
     tokens = re.split(reg, text)
     return tokens
+
+def to_string(text):
+    return "str(%s)" % text
+
+
+def throw_error(message, who_threw):
+    raise TemplateError(message, who_threw)
+
+
+def is_expression(token):
+    return token.startswith('{{')
+
+
+def is_control(token):
+    return token.startswith('{%')
+
+
+class TemplateError(Exception):
+    pass
