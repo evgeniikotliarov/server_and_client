@@ -16,7 +16,7 @@
 
 						{% if user %}
 							<li><a href="/create_post.html">Create post</a></li>
-							<li><a href="/profile.html">Profile</a></li>
+							<li><a href="/profile.html?user={{ user.name }}">Profile</a></li>
 						{% endif %}{% else %}
 							<li><a href="/registration.html">Register</a></li>
 							<li><a href="/login.html">Log in</a></li>
@@ -32,16 +32,16 @@
 			<div class="container" name='top'>
 			<div class="posts">
 
-				{% for publication in posts %}
+				{% for publication in publications %}
 
 				<div class="index_post">
 					<div class="title">
-						<h3><a href="{{ publication.url }}" target="_blank">
+						<h3><a href="/publication.html?post={{ publication._id }}" target="_blank">
 							{{ publication.title }}
 						</a></h3>
 					</div>
 					<center>
-						<a href="{{publication.url}}">
+						<a href="/publication.html?post={{ publication._id }}">
 							<img src="{{ publication.attachments }}" alt="" style="width: 750px;">
 						</a>
 					</center>

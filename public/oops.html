@@ -12,11 +12,16 @@
 				<nav class="menu">
 					<div class="search"><p>{{ if user }}</p></div>
 					<ul>
-						<li><a href="/index.html">Home</a></li>
-						<li><a href="/registration.html">Get started</a></li>
-						<li><a href="/login.html">Log in</a></li>
-						<li><a href="/profile.html">Profile</a></li>
-						<li><a href="/create_post.html">Create post</a></li>
+						<li><a href="index.html">Home</a></li>
+
+						{% if user %}
+							<li><a href="/create_post.html">Create post</a></li>
+							<li><a href="/profile.html?user={{ user.name }}">Profile</a></li>
+						{% endif %}{% else %}
+							<li><a href="/registration.html">Register</a></li>
+							<li><a href="/login.html">Log in</a></li>
+						{% endelse %}
+
 					</ul>
 				</nav>
 			</header>
