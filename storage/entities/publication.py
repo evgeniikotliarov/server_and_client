@@ -6,10 +6,10 @@ class Publication:
         self.title = title
         self.text = text
         self.attachments = attachments
-        self.unique_id = generate_id()
+        self._id = generate_id()
 
     def set_id(self):
-        pass
+        return self._id
 
     def set_text(self):
         pass
