@@ -10,6 +10,9 @@ class Sessions:
     def get_session(self, session_id):
         return self.storage.get_session(session_id)
 
+    def delete_session(self, session_id):
+        self.delete_session(session_id)
+
 
 SessionsMemoryDAO = Sessions(session_storage)
 
