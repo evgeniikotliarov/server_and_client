@@ -18,9 +18,7 @@ def do_publish(request, response_builder):
     title, text, attachment = publish_fields['title'], publish_fields['text'], publish_fields['attachment']
     attachment = save_attachment(attachment)
     title, text, attachment = ensure_string(title, text, attachment)
-    publication = PublicationsMemoryDAO.create_publication(username, title, text, attachment)
-    url = make_publication_url(publication)
-    publication.set_url(url)
+    PublicationsMemoryDAO.create_publication(username, title, text, attachment)
 
     return do_redirect(INDEX_PAGE, response_builder)
 
@@ -37,7 +35,3 @@ def save_attachment(attachment):
     filename = _id + ".jpg" #  TODO Сделать это нормально
     save_image(attachment, filename, ABS_IMAGES_FOLDER)
     return join(IMAGES_FOLDER, filename)
-
-def make_publication_url(publication):
-    _id = publication.get_id()
-    return "publication/" + _id + ".html"

@@ -19,6 +19,3 @@ class Publication:
 
     def set_attacment(self):
         pass
-
-    def set_url(self, url):
-        self.url = url
