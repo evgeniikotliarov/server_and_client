@@ -1,13 +1,12 @@
 from collections import OrderedDict
 from storage.entities.publication import Publication
-from util.id_generator import generate_id
 
 _publications = OrderedDict()
 
-def create_publication(author, title, text, attachment=None, unique_id=None):
+def create_publication(author, title, text, attachment=None, _id=None):
     publication = Publication(author, title, text, attachment)
-    unique_id = generate_id()
-    _publications[unique_id] = publication
+    _id = publication.get_id()
+    _publications[_id] = publication
     return publication
 
 
