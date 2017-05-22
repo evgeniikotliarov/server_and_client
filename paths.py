@@ -14,3 +14,4 @@ IMAGES_FOLDER = 'image'
 ABS_IMAGES_FOLDER = join(PUBLIC_FOLDER, IMAGES_FOLDER)
 
 LOGS_FOLDER = join(ROOT_PATH, 'logs')
+ERROR_PAGE = '  /oops.html'
