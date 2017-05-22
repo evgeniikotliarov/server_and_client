@@ -3,15 +3,19 @@ join = os.path.join
 
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-INDEX_PAGE = '/index.html'
-LOGIN_PAGE = '/login.html'
-PUBLICATION_PAGE = '/publication.html'
 
+UPLOADS_FOLDER = 'uploads'
 PUBLIC_FOLDER = join(ROOT_PATH, 'public')
+COMPONENTS_FOLDER = join(PUBLIC_FOLDER, '_components')
+ABS_IMAGES_FOLDER = join(PUBLIC_FOLDER, UPLOADS_FOLDER)
+
+BASE_PAGE = join(PUBLIC_FOLDER, 'base.html')
+LOGIN_PAGE = '/login.html'
+INDEX_PAGE = '/index.html'
+PUBLICATION_PAGE = '/publication.html'
 PROFILE_PAGE = '/profile.html'
+CREATE_PUBLICATION = '/create_post.html'
+EDIT_PUBLICATION = '/create_post.html'
 
-IMAGES_FOLDER = 'image'
-ABS_IMAGES_FOLDER = join(PUBLIC_FOLDER, IMAGES_FOLDER)
-
-LOGS_FOLDER = join(ROOT_PATH, 'logs')
-ERROR_PAGE = '  /oops.html'
+LOGS_FOLDER = join(ROOT_PATH, "logs")
+ERROR_PAGE = '/oops.html'
