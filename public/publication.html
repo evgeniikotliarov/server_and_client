@@ -1,36 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<link rel="shortcut icon" href="/image/favicon.ico"/>
-		<link rel="stylesheet" href="/styles/style.css" />
-		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-	</head>
-	<body>
-		<!-- Header -->
-			<header>
-				<nav class="menu">
-					<div class="search"><p></p></div>
-					<ul>
-						<ul>
-						<li><a href="index.html">Home</a></li>
-
-						{% if user %}
-							<li><a href="/create_post.html">Create post</a></li>
-							<li><a href="/profile.html?user={{ user.name }}">Profile</a></li>
-						{% endif %}{% else %}
-							<li><a href="/registration.html">Register</a></li>
-							<li><a href="/login.html">Log in</a></li>
-						{% endelse %}
-
-					</ul>
-					</ul>
-				</nav>
-			</header>
-
 			<!-- Posts Block  -->
-
-
 			<div class="container" name='top'>
 			<div class="posts">
 
@@ -45,13 +13,3 @@
 
 			</div>
 			</div>
-		<footer class="footer">
-			<center><a href="#top"><img src="image/black-white-metro-up-icon.png" alt="up" style="height: 25px;"/></a></center>
-		<h3>Blog (c)</H3>
-		<p>	Bishkek 2017, tel.+996312345678</p>
-		</footer>
-	</body>
-
-
-
-</html>
