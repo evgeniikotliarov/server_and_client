@@ -8,8 +8,8 @@ from util.constants.const_main import STATIC
 
 
 def get_request_handler_route(request):
-    method, path = request.method, request.target
     insert_aliases(request)
+    method, path = request.method, request.target
 
     is_valid_method = method in routes
     if not is_valid_method: return partial(do_error, METHOD_NOT_ALLOWED)
@@ -18,7 +18,7 @@ def get_request_handler_route(request):
     is_path_valid = validate_path(path)
     is_action_valid = path in handler or STATIC in handler
 
-    if not (is_path_valid or is_action_valid):
+    if not (is_path_valid and is_action_valid):
         return partial(do_error, NOT_FOUND)
 
     return handler[path] if path in handler else handler[STATIC]
