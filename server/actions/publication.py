@@ -37,4 +37,4 @@ def save_attachment(attachment):
     _id = generate_id()
     filename = _id + ".jpg" #  TODO Сделать это нормально, по майму или спарсить файлнейм из мультипарта
     save_image(attachment, filename, ABS_IMAGES_FOLDER)
-    return join(IMAGES_FOLDER, filename)
+    return join(UPLOADS_FOLDER, filename)
