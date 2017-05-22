@@ -19,10 +19,10 @@ class Request:
 
     def get_session_id(self):
         if self.session:
-            return self.session
+            return self.session.decode()
         elif COOKIE in self.headers:
             cookie = self.headers[COOKIE]
             found = re.findall(get_session_regex(), cookie)
             found = found[0] if found else None
             self.session = found
-            return self.session
+            return self.session.decode()
