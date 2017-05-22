@@ -1,3 +1,5 @@
+from util.constants.const_main import INDEX
+
 ALIASES = {
-    b"/": b"/index.html"
+    b"/": INDEX
 }
