@@ -58,9 +58,11 @@ REGISTER = b'/register'
 AUTH = b'/auth'
 PUBLISH = b'/publish'
 PUBLICATION = b'/publication.html'
-USERPAGE = b'/profile.html'
+USER_PAGE = b'/profile.html'
 INDEX = b'/index.html'
 STATIC = b''
+LOGOUT = b'/logout'
+
 
 DEFAULT_CACHE_CONTROL = b"max-age=3600000"
 HTTP_1_1 = b'HTTP/1.1'

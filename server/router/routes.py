@@ -4,7 +4,7 @@ from server.actions.publication import do_publish, do_delete
 from server.actions.registration import do_register
 from server.actions.get_pages import get_index, get_publication, get_profile, get_static
 from server.actions.head_pages import head_index, head_publication, head_userpage, head_static
-from server.actions.auth import do_auth
+from server.actions.auth import do_auth, do_logout
 
 
 routes = {
@@ -24,7 +24,8 @@ routes = {
     POST: {
         REGISTER: do_register,
         AUTH: do_auth,
-        PUBLISH: do_publish
+        PUBLISH: do_publish,
+        LOGOUT: do_logout
     },
 
     PUT: {

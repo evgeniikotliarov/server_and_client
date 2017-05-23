@@ -11,7 +11,7 @@ class Sessions:
         return self.storage.get_session(session_id)
 
     def delete_session(self, session_id):
-        self.delete_session(session_id)
+        self.storage.delete_session(session_id)
 
 
 SessionsMemoryDAO = Sessions(session_storage)

@@ -5,7 +5,7 @@ _sessions = {}
 def create_sessions(username, age):
     session = Session(username, age)
     _sessions[session.get_id()] = session
-    return session.get_id
+    return session
 
 def get_session(_id):
     return _sessions[_id] if _id in _sessions else None
