@@ -3,7 +3,7 @@ from paths import *
 from server.form_encodings.decoder import decode_body
 from storage.sessions import SessionsMemoryDAO
 from storage.users import UsersMemoryDAO
-from util.constants.misc import SESSION, SESSION_DEFAULT_AGE
+from util.constants.const_main import SESSION, SESSION_DEFAULT_AGE
 from util.redirect import do_redirect
 
 
@@ -14,11 +14,18 @@ def do_auth(request, response_builder):
     valid_user = __validate_user(username, password)
 
     if valid_user:
-        session_id = SessionsMemoryDAO.create_session(username, SESSION_DEFAULT_AGE).encode()
-        response_builder.set_cookie(b"%s=%s" % (SESSION, session_id))  # TODO COOKIE EXPIRATION
+        session = SessionsMemoryDAO.create_session(username, SESSION_DEFAULT_AGE)
+        response_builder.set_cookie(b"%s=%s; max-age=%d" %
+                                    (SESSION, session.get_id().encode(), session.max_age, ))
         return do_redirect(INDEX_PAGE, response_builder)
     else:
         return do_redirect(LOGIN_PAGE, response_builder)  # TODO show some error on the page
+
+
+def do_logout(request, response_builder):
+    session_id = request.get_session_id()
+    SessionsMemoryDAO.delete_session(session_id)
+    return do_redirect(INDEX_PAGE, response_builder)
 
 
 def __validate_user(username, password):

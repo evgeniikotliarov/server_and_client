@@ -15,7 +15,7 @@ class TestValidateFile(unittest.TestCase):
 
     def test_get_filesystem_path(self):
         file = b'/index.html'
-        result = get_filesystem_path(file)
+        result = get_public_path(file)
         expected = b'/home/evgenii/projects/server_and_client/public/index.html'
         self.assertEqual(result, expected)
 
