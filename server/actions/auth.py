@@ -19,7 +19,7 @@ def do_auth(request, response_builder):
                                     (SESSION, session.get_id().encode(), session.max_age, ))
         return do_redirect(INDEX_PAGE, response_builder)
     else:
-        return do_redirect(LOGIN_PAGE, response_builder)  # TODO show some error on the page
+        return do_redirect(ERROR_PAGE, response_builder)
 
 
 def do_logout(request, response_builder):
