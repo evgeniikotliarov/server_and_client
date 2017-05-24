@@ -25,4 +25,4 @@ class Request:
             found = re.findall(get_session_regex(), cookie)
             found = found[0] if found else None
             self.session = found
-            return self.session.decode()
+            return self.session.decode() if found else None
