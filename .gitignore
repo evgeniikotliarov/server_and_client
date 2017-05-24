@@ -146,5 +146,5 @@ ENV/
 .idea/
 /logs/
 public/image/
-public/uploads
-/logs/logs.txt
+public/uploads/*
+/logs/*
