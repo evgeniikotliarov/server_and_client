@@ -24,7 +24,7 @@ while True:
     response = response_transformer.transform_response(response_obj)
 
     connection.send(response)
-    if response_obj.body and request.method != HEAD:
+    if response_obj.body:
         connection.send(response_obj.body)
     log_response(response_obj)
     connection.close()
