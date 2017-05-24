@@ -4,7 +4,7 @@ from server.form_encodings.decoder import decode_body
 from storage.sessions import SessionsMemoryDAO
 from storage.users import UsersMemoryDAO
 from util.constants.const_main import SESSION, SESSION_DEFAULT_AGE
-from util.redirect import do_redirect
+from util.redirect import do_redirect, wrong_credentials
 
 
 def do_auth(request, response_builder):
@@ -19,7 +19,7 @@ def do_auth(request, response_builder):
                                     (SESSION, session.get_id().encode(), session.max_age, ))
         return do_redirect(INDEX_PAGE, response_builder)
     else:
-        return do_redirect(ERROR_PAGE, response_builder)
+        return wrong_credentials(response_builder)
 
 
 def do_logout(request, response_builder):
