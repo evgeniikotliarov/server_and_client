@@ -1,22 +1,17 @@
-import util.constants.response_codes as codes
+from server.actions.get_pages import *
 
 def head_index(request, response_builder):
-    return set_ok(response_builder)
+    return get_index(request, response_builder)
 
 
 def head_publication(request, response_builder):
-    return set_ok(response_builder)
+    return get_publication(request, response_builder)
 
 
-def head_userpage(request, response_builder):
-    return set_ok(response_builder)
+def head_profile(request, response_builder):
+    return get_profile(request, response_builder)
 
 
 def head_static(request, response_builder):
-    return set_ok(response_builder)
+    return get_static(request, response_builder)
 
-def set_ok(response_builder):
-    code, msg = codes.OK
-    response_builder.set_code(code)
-    response_builder.set_message(msg)
-    return response_builder

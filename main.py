@@ -5,8 +5,6 @@ from server.logger import log_request, log_response
 from server.response.response_builder import *
 from server.router import router
 
-
-
 socket_server = socket.socket(socket_family, socket_type)
 socket_server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 socket_server.bind((HOST, PORT))
@@ -26,7 +24,7 @@ while True:
     response = response_transformer.transform_response(response_obj)
 
     connection.send(response)
-    if response_obj.body:
+    if response_obj.body and request.method != HEAD:
         connection.send(response_obj.body)
     log_response(response_obj)
     connection.close()
