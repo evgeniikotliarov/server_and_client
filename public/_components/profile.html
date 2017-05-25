@@ -4,7 +4,7 @@
 
 	<div class="index_post">
 		<div class="title">
-			<div class="username"><a href="/profile.html?user={{ user.name }}">{{ user.name }}</a></div>
+			<div class="username"><a href="/profile.html?user={{ publication.author }}">{{ publication.author }}</a></div>
 			<h3><a href="/publication.html?post={{ publication._id }}" target="_blank">
 				{{ publication.title }}
 				</a>
@@ -12,7 +12,9 @@
 		</div>
 		<center>
 			<a href="/publication.html?post={{ publication._id }}">
-				<img src="{{ publication.attachments }}" alt="" style="width: 750px;">
+				{% if publication.attachments %}
+				<img src="{{ publication.get_first_attachment }}" alt="" style="width: 750px;">
+				{% endif  %}
 			</a>
 		</center>
 		<ul>
