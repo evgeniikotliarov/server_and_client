@@ -12,11 +12,16 @@ import util.constants.response_codes as codes
 from util.files import retrieve_file_buffered, retrieve_file
 
 
+# TODO DRY
+
+
 def get_index(request, response_builder):
     path, session_id, query = request.target, request.get_session_id(), request.query
     file_path = get_component_path(path)
     data = PublicationsMemoryDAO.get_all_publications()
+    user = get_user(session_id)
     content = index_template.render({
+        "user" : user,
         "publications": data,
         "edit_post_url": "/edit",  # TODO edit page
     })
@@ -53,7 +58,8 @@ def get_profile(request, response_builder):
     username = query.decode().strip().split('=')[1]  # TODO нормально спарсить
     user = UsersMemoryDAO.get_user(username)
     content = profile_template.render({
-        "publications": user.get_publications()
+        "user" : user,
+        "publications": reversed(user.get_publications())
     })
     base.insert_content(content)
     html = base.render_base({"user": get_user(session_id)})
