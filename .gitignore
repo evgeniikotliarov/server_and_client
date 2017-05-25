@@ -74,7 +74,7 @@ wheels/
 *.egg
 
 # PyInstaller
-#  Usually these files are written by a python script from a template_engine
+#  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
@@ -144,7 +144,6 @@ ENV/
 # mkdocs documentation
 /site
 .idea/
-/logs/
+logs/
 public/image/
 public/uploads/*
-/logs/*

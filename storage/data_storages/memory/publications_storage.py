@@ -1,10 +1,11 @@
-from collections import OrderedDict
 from storage.entities.publication import Publication
+from collections import OrderedDict
 
 _publications = OrderedDict()
 
-def create_publication(author, title, text, attachment=None, _id=None):
-    publication = Publication(author, title, text, attachment)
+
+def create_publication(username, title, text, attachments=None, _id=None):
+    publication = Publication(username, title, text, attachments)
     _id = publication.get_id()
     _publications[_id] = publication
     return publication
@@ -21,6 +22,6 @@ def delete_publication(unique_id):
         del _publications[unique_id]
 
 
-def get_all_publication():
+def get_all_publications():
     for key in reversed(_publications):
         yield _publications[key]

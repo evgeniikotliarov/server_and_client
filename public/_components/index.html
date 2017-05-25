@@ -1,23 +1,21 @@
-<div class="container" name='top'>
-	<div class="posts">
-	{% for publication in publications %}
-
-	<div class="index_post">
-		<div class="title">
-			<div class="username"><a href="/profile.html?user={{ user.name }}">{{ user.name }}</a></div>
-			<h3><a href="/publication.html?post={{ publication._id }}" target="_blank">
-				{{ publication.title }} 
-			</a></h3>
-		</div>
-
-			<a href="/publication.html?post={{ publication._id }}">
-				<img src="{{ publication.attachments }}" alt="" style="width: 750px;">
-			</a>
-		<ul>
-			<li><a href="{{ edit_post_url }}">Edit post</a></li>
-		</ul>
-	</div>
-
-	{% endfor %}
-	</div>
-</div>
+{% for publication in publications %}
+				
+				<div class="index_post">
+					<div class="title">
+						<h3><a href="/publication.html?post={{ publication._id }}" target="_blank">
+							{{ publication.title }}
+						</a></h3>
+					</div>
+					<center>
+						<a href="/publication.html?post={{ publication._id }}">
+							{% if publication.attachments %}
+								<img src="{{ publication.get_first_attachment }}" alt="" style="width: 750px;">
+							{% endif %}
+						</a>
+					</center>
+					<ul>
+					<li><a href="#">Edit post</a></li>
+					</ul>
+				</div>
+				
+				{% endfor %}

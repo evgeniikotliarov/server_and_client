@@ -17,12 +17,14 @@ def do_publish(request, response_builder):
     username = session.username if session else None
     user = UsersMemoryDAO.get_user(username)
 
-    title, text, attachment = publish_fields['title'], publish_fields['text'], publish_fields['attachment']
-    attachment = save_attachment(attachment)
-    title, text, attachment = ensure_string(title, text, attachment)
-    publication = PublicationsMemoryDAO.create_publication(username, title, text, attachment)
-    if user: user.add_publication(publication)
-    print(user.get_publications())
+    title, text = publish_fields['title'], publish_fields['text']
+    attachments = get_attachments(publish_fields)
+    attachments_paths = save_attachments(attachments)
+    title, text = ensure_string(title, text)
+
+    publication = PublicationsMemoryDAO.create_publication(username, title, text, attachments_paths)
+    if user:
+        user.add_publication(publication)
     return do_redirect(INDEX_PAGE, response_builder)
 
 
@@ -33,8 +35,19 @@ def do_delete(request, response_builder):
     return do_redirect(INDEX_PAGE, response_builder)
 
 
-def save_attachment(attachment):
-    _id = generate_id()
-    filename = _id + ".jpg" #  TODO Сделать это нормально, по майму или спарсить файлнейм из мультипарта
-    save_image(attachment, filename, ABS_IMAGES_FOLDER)
-    return join(UPLOADS_FOLDER, filename)
+def get_attachments(fields):
+    attachments = []
+    for field, value in fields.items():
+        if field.startswith('attachment'):
+            ensure_string(value)
+    return attachments
+
+
+def save_attachments(attachments):
+    paths = []
+    for att in attachments:
+        _id = generate_id()
+        filename = _id + ".jpg" #  TODO Сделать это нормально, по майму или спарсить файлнейм из мультипарта
+        save_image(att, filename, UPLOADS_ABS_FOLDER)
+        paths.append(join(UPLOADS_FOLDER, filename))
+    return paths
