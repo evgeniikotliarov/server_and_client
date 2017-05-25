@@ -1,15 +1,21 @@
-			<!-- Posts Block  -->
-			<div class="container" name='top'>
-			<div class="posts">
+<!-- Posts Block  -->
 
-				<div class="index_post">
-					<div class="title"><h3>{{ publication.title }}</h3></div>
-					<center><img  src="{{ publication.attachments }}" alt="Lorem Ipsum" style="width: 750px;"></center>
-					<p>{{ publication.text }}</p>
-					<ul>
-					<li><a  href="/edit_post.html?post={{ publication._id }}">Edit post</a></li>
-					</ul>
-				</div>
 
-			</div>
-			</div>
+<div class="container" name='top'>
+<div class="posts">
+
+	<div class="index_post">
+		<div class="title">
+			<h3>{{ publication.title }}</h3>
+		</div>
+		<center><img  src="{{ publication.attachments }}" alt="Lorem Ipsum" style="width: 750px;"></center>
+		<p>{{ publication.text }}</p>
+		<ul>
+
+		<li><a  href="{{ edit_post_url }}">Delete post</a></li>
+		<li><a  href="{{ edit_post_url }}">Edit post</a></li>
+		</ul>
+	</div>
+
+</div>
+</div>

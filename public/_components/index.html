@@ -1,20 +1,23 @@
-				{% for publication in publications %}
-				
-				<div class="index_post">
-					<div class="title">
-						<h3><a href="/publication.html?post={{ publication._id }}" target="_blank">
-							{{ publication.title }}
-						</a></h3>
-					</div>
-					<center>
-						<a href="/publication.html?post={{ publication._id }}">
-							<img src="{{ publication.attachments }}" alt="" style="width: 750px;">
-						</a>
-					</center>
-					<p>{{ publication.text }}</p>
-					<ul>
-					<li><a href="{{ edit_post_url }}">Edit post</a></li>
-					</ul>
-				</div>
-				
-				{% endfor %}
+<div class="container" name='top'>
+	<div class="posts">
+	{% for publication in publications %}
+
+	<div class="index_post">
+		<div class="title">
+			<div class="username"><a href="/profile.html?user={{ user.name }}">{{ user.name }}</a></div>
+			<h3><a href="/publication.html?post={{ publication._id }}" target="_blank">
+				{{ publication.title }} 
+			</a></h3>
+		</div>
+
+			<a href="/publication.html?post={{ publication._id }}">
+				<img src="{{ publication.attachments }}" alt="" style="width: 750px;">
+			</a>
+		<ul>
+			<li><a href="{{ edit_post_url }}">Edit post</a></li>
+		</ul>
+	</div>
+
+	{% endfor %}
+	</div>
+</div>
