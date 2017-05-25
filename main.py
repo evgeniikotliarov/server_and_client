@@ -14,7 +14,6 @@ while True:
     connection, address = socket_server.accept()
     raw_request = request_parser.get_raw_request(connection)
     request = request_transformer.transform_request(raw_request) if raw_request else None
-
     if not request: continue
     log_request(request)
 
@@ -24,7 +23,10 @@ while True:
     response = response_transformer.transform_response(response_obj)
 
     connection.send(response)
-    if response_obj.body:
-        connection.send(response_obj.body)
+    try:
+        if response_obj.body:
+            connection.send(response_obj.body)
+    except BrokenPipeError: continue
     log_response(response_obj)
+
     connection.close()
