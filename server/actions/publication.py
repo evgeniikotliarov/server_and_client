@@ -39,7 +39,7 @@ def get_attachments(fields):
     attachments = []
     for field, value in fields.items():
         if field.startswith('attachment'):
-            ensure_string(value)
+            attachments.append(value)
     return attachments
 
 

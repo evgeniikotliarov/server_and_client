@@ -18,12 +18,11 @@ from util.files import retrieve_file_buffered, retrieve_file
 def get_index(request, response_builder):
     path, session_id, query = request.target, request.get_session_id(), request.query
     file_path = get_component_path(path)
-    data = PublicationsMemoryDAO.get_all_publications()
+    data = list(PublicationsMemoryDAO.get_all_publications())
     user = get_user(session_id)
     content = index_template.render({
         "user" : user,
         "publications": data,
-        "edit_post_url": "/edit",  # TODO edit page
     })
     base.insert_content(content)
     html = base.render_base({"user": get_user(session_id)})
