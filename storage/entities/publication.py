@@ -11,3 +11,6 @@ class Publication:
 
     def get_id(self):
         return self._id
+
+    def get_first_attachments(self):
+        return self.attachments[0] if self.attachments else None
