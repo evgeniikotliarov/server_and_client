@@ -19,9 +19,7 @@ def get_index(request, response_builder):
     path, session_id, query = request.target, request.get_session_id(), request.query
     file_path = get_component_path(path)
     data = list(PublicationsMemoryDAO.get_all_publications())
-    user = get_user(session_id)
     content = index_template.render({
-        "user" : user,
         "publications": data,
     })
     base.insert_content(content)
@@ -39,7 +37,6 @@ def get_publication(request, response_builder):
     publication = PublicationsMemoryDAO.get_publication(publication_id)
     content = publication_template.render({
         "publication": publication,
-        "user": get_user(session_id),
         "edit_post_url": "/edit"
         # TODO EDIT PAGE
     })
@@ -57,7 +54,6 @@ def get_profile(request, response_builder):
     username = query.decode().strip().split('=')[1]  # TODO нормально спарсить
     user = UsersMemoryDAO.get_user(username)
     content = profile_template.render({
-        "user" : user,
         "publications": reversed(user.get_publications())
     })
     base.insert_content(content)
