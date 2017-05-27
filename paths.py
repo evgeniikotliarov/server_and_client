@@ -15,7 +15,7 @@ INDEX_PAGE = '/index.html'
 PUBLICATION_PAGE = '/publication.html'
 PROFILE_PAGE = '/profile.html'
 CREATE_PUBLICATION = '/create_post.html'
-EDIT_PUBLICATION = '/create_post.html'
+EDIT_PUBLICATION = '/edit_post.html'
 
 LOGS_FOLDER = join(ROOT_PATH, "logs")
 ERROR_PAGE = '/oops.html'

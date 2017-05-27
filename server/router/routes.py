@@ -2,7 +2,7 @@ from util.constants.const_main import *
 
 from server.actions.publication import do_publish, do_delete
 from server.actions.registration import do_register
-from server.actions.get_pages import get_index, get_publication, get_profile, get_static
+from server.actions.get_pages import get_index, get_publication, get_profile, get_static, get_edit_post
 from server.actions.head_pages import head_index, head_publication, head_profile, head_static
 from server.actions.auth import do_auth, do_logout
 
@@ -18,7 +18,8 @@ routes = {
         INDEX: head_index,
         PUBLICATION: head_publication,
         USER_PAGE: head_profile,
-        STATIC: head_static
+        STATIC: head_static,
+        EDIT_POST: get_edit_post
     },
     # OPTIONS: do_options,
     POST: {

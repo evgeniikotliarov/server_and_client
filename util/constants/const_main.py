@@ -62,6 +62,7 @@ USER_PAGE = b'/profile.html'
 INDEX = b'/index.html'
 STATIC = b''
 LOGOUT = b'/logout'
+EDIT_POST = b'/edit_post.html'
 
 
 DEFAULT_CACHE_CONTROL = b"max-age=3600000"

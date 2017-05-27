@@ -2,12 +2,12 @@ from storage.publications import PublicationsMemoryDAO
 from storage.sessions import SessionsMemoryDAO
 from storage.users import UsersMemoryDAO
 
-from template_engine.compiled_templates import index_template, publication_template, profile_template
+from template_engine.compiled_templates import index_template, publication_template, profile_template, edit_page_template
 import template_engine.base_view as base
 
 from util.path import get_public_path, get_component_path, file_exists
 from util.files import get_file_type
-from util.constants.misc import DEFAULT_CACHE_CONTROL
+from util.constants.const_main import DEFAULT_CACHE_CONTROL
 import util.constants.response_codes as codes
 from util.files import retrieve_file_buffered, retrieve_file
 
@@ -37,11 +37,26 @@ def get_publication(request, response_builder):
     publication = PublicationsMemoryDAO.get_publication(publication_id)
     content = publication_template.render({
         "publication": publication,
-        "edit_post_url": "/edit"
         # TODO EDIT PAGE
     })
     base.insert_content(content)
     html = base.render_base({"user": get_user(session_id)})
+    mime = get_file_type(file_path)
+    response_builder = set_ok(response_builder)
+    response_builder = attach_file(response_builder, html, mime)
+    return response_builder
+
+
+def get_edit_post(request, response_builder):
+    path, session_id, query = request.target, request.get_session_id(), request.query
+    file_path = get_component_path()
+    publication_id = query.decode().split('=')[1]
+    publication = PublicationsMemoryDAO.get_publication(publication_id)
+    content = edit_page_template.render({
+        "publication": publication
+    })
+    base.insert_content(content)
+    html = base.render_base({"user":get_user(session_id)})
     mime = get_file_type(file_path)
     response_builder = set_ok(response_builder)
     response_builder = attach_file(response_builder, html, mime)

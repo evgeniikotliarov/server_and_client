@@ -11,6 +11,11 @@ _publication_data = retrieve_file(get_component_path(PUBLICATION_PAGE))
 publication_template = Template(_publication_data)
 publication_template.compile()
 
+_edit_page = retrieve_file(get_component_path(EDIT_PUBLICATION))
+edit_page_template = Template(_publication_data)
+publication_template.compile()
+
 _profile_data = retrieve_file(get_component_path(PROFILE_PAGE))
 profile_template = Template(_profile_data)
 profile_template.compile()
+
