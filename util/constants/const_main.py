@@ -63,7 +63,7 @@ INDEX = b'/index.html'
 STATIC = b''
 LOGOUT = b'/logout'
 EDIT_POST = b'/edit_post.html'
-
+DELETE_POST = b'delete_post'
 
 DEFAULT_CACHE_CONTROL = b"max-age=3600000"
 HTTP_1_1 = b'HTTP/1.1'

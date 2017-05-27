@@ -29,9 +29,15 @@ def do_publish(request, response_builder):
 
 
 def do_delete(request, response_builder):
-    _id = decode_body(request.body)["id"]
-    PublicationsMemoryDAO.delete_publication(_id)
+    query = request.query.decode()
+    _id = query.split("=")[1]
+    publication = PublicationsMemoryDAO.get_publication(_id)
+    username = publication.author
+    author = UsersMemoryDAO.get_user(username)
+    if publication in author.publications:
+        author.publications.remove(publication)
 
+    PublicationsMemoryDAO.delete_publication(_id)
     return do_redirect(INDEX_PAGE, response_builder)
 
 

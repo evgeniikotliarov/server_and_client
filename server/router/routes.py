@@ -26,7 +26,8 @@ routes = {
         REGISTER: do_register,
         AUTH: do_auth,
         PUBLISH: do_publish,
-        LOGOUT: do_logout
+        LOGOUT: do_logout,
+        DELETE_POST: do_delete
     },
 
     PUT: {
