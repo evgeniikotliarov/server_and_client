@@ -210,7 +210,7 @@ nav ul li a{
 	font-weight: 300;
 	text-align: center;
 	color: grey;
-
+    word-wrap: break-word
 }
 .index_post{
 	border: 10px  #948888;
