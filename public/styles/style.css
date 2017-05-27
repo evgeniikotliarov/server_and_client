@@ -176,10 +176,12 @@ nav ul li a{
 	text-align: center;
 	text-decoration: none;
 	float: right;
+
 }
 
 .username a{
 	text-decoration: none;
+	color: #1ab0b3;
 	float: left;
 	font-family: Roboto, sans-serif;
 	font-size: 1.17em;
@@ -224,6 +226,7 @@ nav ul li a{
 	justify-content:flex-end;
 }
 .index_post ul li a{
+    padding-right: 10px;
 	text-decoration: none;
 }
 .button {
