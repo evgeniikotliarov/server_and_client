@@ -9,12 +9,14 @@
 			<img  src="{{ attachment }}" alt="Lorem Ipsum" style="width: 750px;">
 			{% endfor %}
 		</center>
+        {% if is_author %}
 		<ul>
 		<li><a  href="/edit_post.html?post={{ publication._id }}">Edit post</a></li>
 		<li>
 			<form action="/delete_post?id={{ publication._id }}" method="post" ><button>Delete post</button></form>
 		</li>
 		</ul>
+        {% endif %}
 	</div>
 
 </div>
