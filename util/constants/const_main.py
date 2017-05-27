@@ -62,6 +62,7 @@ USER_PAGE = b'/profile.html'
 INDEX = b'/index.html'
 STATIC = b''
 LOGOUT = b'/logout'
+EDIT = b'/edit'
 EDIT_POST = b'/edit_post.html'
 DELETE_POST = b'delete_post'
 

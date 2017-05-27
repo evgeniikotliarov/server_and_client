@@ -6,6 +6,8 @@ _publications = OrderedDict()
 
 def create_publication(username, title, text, attachments=None, _id=None):
     publication = Publication(username, title, text, attachments)
+    if _id:
+        publication.set_id(_id)
     _id = publication.get_id()
     _publications[_id] = publication
     return publication

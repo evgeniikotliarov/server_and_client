@@ -1,6 +1,6 @@
 from util.constants.const_main import *
 
-from server.actions.publication import do_publish, do_delete
+from server.actions.publication import do_publish, do_edit, do_delete
 from server.actions.registration import do_register
 from server.actions.get_pages import get_index, get_publication, get_profile, get_static, get_edit_post
 from server.actions.head_pages import head_index, head_publication, head_profile, head_static
@@ -27,6 +27,7 @@ routes = {
         AUTH: do_auth,
         PUBLISH: do_publish,
         LOGOUT: do_logout,
+        EDIT: do_edit,
         DELETE_POST: do_delete
     },
 

@@ -1,21 +1,21 @@
-		<!-- Posts Block  -->
-			<div class="container" name='top'>
-			<div class="posts">
+<!-- Posts Block  -->
+<div class="container" name='top'>
+<div class="posts">
 
-				<div class="index_post">
-					<div class="title"><h3>{{ publication.title }}</h3></div>
-					<p>{{ publication.text }}</p>
-					<center>{% for attachment in publication.attachments %}
-						<img  src="{{ attachment }}" alt="Lorem Ipsum" style="width: 750px;">
-						{% endfor %}
-					</center>
-					<ul>
-					<li><a  href="/edit_post.html?post={{ publication._id }}">Edit post</a></li>
-					<li>
-						<form action="/delete_post?id={{ publication._id }}" method="post" ><button>Delete post</button></form>
-					</li>
-					</ul>
-				</div>
+	<div class="index_post">
+		<div class="title"><h3>{{ publication.title }}</h3></div>
+		<p>{{ publication.text }}</p>
+		<center>{% for attachment in publication.attachments %}
+			<img  src="{{ attachment }}" alt="Lorem Ipsum" style="width: 750px;">
+			{% endfor %}
+		</center>
+		<ul>
+		<li><a  href="/edit_post.html?post={{ publication._id }}">Edit post</a></li>
+		<li>
+			<form action="/delete_post?id={{ publication._id }}" method="post" ><button>Delete post</button></form>
+		</li>
+		</ul>
+	</div>
 
-			</div>
-			</div>
+</div>
+</div>
