@@ -6,10 +6,9 @@ def transform_response(response_obj):
     proto = response_obj.protocol
     code = response_obj.code
     msg = response_obj.message
-    response += SPACE_BYTE.join((proto, code, msg) + LF_BYTE
+    response += SPACE_BYTE.join((proto, code, msg)) + LF_BYTE
     for field in response_obj.headers:
         response += field + LF_BYTE
     response += LF_BYTE
 
     return response
-

@@ -1,4 +1,4 @@
-from paths import LOGIN_PAGE, ERROR_PAGE
+from paths import LOGIN_PAGE, NOT_FOUND_PAGE
 from server.form_encodings.decoder import decode_body
 from storage.users import UsersMemoryDAO, UserCreationError
 from util.redirect import do_redirect, user_exists

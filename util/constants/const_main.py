@@ -40,6 +40,11 @@ reuse_adress = True
 socket_family = socket.AF_INET
 socket_type = socket.SOCK_STREAM
 
+METHOD = "method"
+QUERY = "query"
+PROTOCOL = "protocol"
+TARGET = "target"
+
 MULTIPART = b'multipart'
 
 POST = b"POST"

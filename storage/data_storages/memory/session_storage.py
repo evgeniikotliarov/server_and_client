@@ -7,8 +7,10 @@ def create_sessions(username, age):
     _sessions[session.get_id()] = session
     return session
 
+
 def get_session(_id):
     return _sessions[_id] if _id in _sessions else None
+
 
 def delete_session(_id):
     if _id in _sessions:

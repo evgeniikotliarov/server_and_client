@@ -7,9 +7,11 @@ def create_user(username, password):
     users[username] = user
     return user
 
+
 def get_user(username):
     if username in users.keys():
         return users[username]
+
 
 def get_all_users():
     return users

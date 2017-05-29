@@ -1,15 +1,14 @@
-import re
-
-import util.regexes as Regexes
-from storage.entities.request import *
+import util.regexes as regexes
+from server.entities.request import *
 from util.constants.const_main import *
 from util.newline import get_newline_char
 
 new_line = CRLF
 
+
 def transform_request(raw_request):
     global new_line
-    new_line = get_newline_char(raw_request)
+    new_line = get_newline_char(raw_request)  # Some clients send requests with \r\n, some with \n
 
     request_lines = raw_request.split(new_line)
     status_line = request_lines[0]
@@ -28,12 +27,13 @@ def transform_request(raw_request):
     request_line = parse_status_line(status_line)
 
     return Request(
-        request_line["method"],
-        request_line["target"],
-        request_line["query"],
-        request_line["protocol"],
+        request_line[METHOD],
+        request_line[TARGET],
+        request_line[QUERY],
+        request_line[PROTOCOL],
         headers,
         body)
+
 
 def headers_to_dict(headers_list):
     headers = {}
@@ -45,20 +45,23 @@ def headers_to_dict(headers_list):
         headers[name] = value
     return headers
 
+
 def parse_status_line(status_line):
-    found = re.findall(Regexes.get_request_regex(), status_line)
+    found = re.findall(regexes.get_request_regex(), status_line)
     found = found[0]
     if len(found) <= 0: return None
     full, method, target, query, protocol = found
     return {
-        'method': method,
-        'target': target,
-        'query': query,
-        'protocol': protocol
+        METHOD: method,
+        TARGET: target,
+        QUERY: query,
+        PROTOCOL: protocol
     }
+
 
 def has_headers(request_lines):
     return len(request_lines) >= 1
+
 
 def has_body(request_lines):
     return EMPTY_BYTE_STR in request_lines

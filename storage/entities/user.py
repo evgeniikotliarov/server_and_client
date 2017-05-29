@@ -8,8 +8,10 @@ class User:
     def add_session(self, session_id):
         self.sesion = session_id
 
+
     def add_publication(self, publication):
         self.publications.append(publication)
+
 
     def get_publications(self):
         return self.publications

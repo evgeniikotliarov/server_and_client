@@ -8,12 +8,14 @@ from server.actions.auth import do_auth, do_logout
 
 
 routes = {
+
     GET: {
         INDEX: get_index,
         PUBLICATION: get_publication,
         USER_PAGE: get_profile,
         STATIC: get_static
     },
+
     HEAD: {
         INDEX: head_index,
         PUBLICATION: head_publication,
@@ -21,7 +23,7 @@ routes = {
         STATIC: head_static,
         EDIT_POST: get_edit_post
     },
-    # OPTIONS: do_options,
+
     POST: {
         REGISTER: do_register,
         AUTH: do_auth,
@@ -36,10 +38,11 @@ routes = {
     },
 
     PATCH: {
-        PUBLISH: do_publish
+        PUBLISH: do_publish,
+        EDIT: do_edit
     },
 
     DELETE: {
-        #
+        DELETE: do_delete
     }
 }
