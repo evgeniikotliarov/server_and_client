@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from template_engine.template import Template
+from template.template import Template
 
 
 class TestTemplate(TestCase):

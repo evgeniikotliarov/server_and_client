@@ -1,5 +1,5 @@
 from paths import *
-from template_engine.template import Template
+from template.template import Template
 from util.path import get_component_path
 from util.files import retrieve_file
 

@@ -11,7 +11,9 @@
 		</div>
 
 			<a href="/publication.html?post={{ publication._id }}">
+				{% if publication.attachments %}
 				<img src="{{ publication.get_first_attachment }}" alt="" style="width: 750px;">
+				{% endif %}
 			</a>
 	</div>
 
