@@ -8,9 +8,9 @@ from util.redirect import do_redirect, wrong_credentials
 
 
 def do_auth(request, response_builder):
-    a_user = decode_body(request)
-    username = a_user['user'].decode().strip()
-    password = a_user['password'].decode().strip()
+    new_user = decode_body(request)
+    username = new_user['user'].decode().strip()
+    password = new_user['password'].decode().strip()
     valid_user = __validate_user(username, password)
 
     if valid_user:
@@ -18,8 +18,8 @@ def do_auth(request, response_builder):
         response_builder.set_cookie(b"%s=%s; max-age=%d" %
                                     (SESSION, session.get_id().encode(), session.max_age, ))
         return do_redirect(INDEX_PAGE, response_builder)
-    else:
-        return wrong_credentials(response_builder)
+
+    return wrong_credentials(response_builder)
 
 
 def do_logout(request, response_builder):
@@ -29,8 +29,4 @@ def do_logout(request, response_builder):
 
 
 def __validate_user(username, password):
-    try:
-        UsersMemoryDAO.validate_user(username, password)
-        return True
-    except ValueError:
-        return False
+    return UsersMemoryDAO.validate_user(username, password)

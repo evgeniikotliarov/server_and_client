@@ -18,4 +18,4 @@ CREATE_PUBLICATION = '/create_post.html'
 EDIT_PUBLICATION = '/edit_post.html'
 
 LOGS_FOLDER = join(ROOT_PATH, "logs")
-ERROR_PAGE = '/oops.html'
+NOT_FOUND_PAGE = '/oops.html'
