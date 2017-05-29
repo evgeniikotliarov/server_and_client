@@ -3,7 +3,7 @@ from storage.DAO.publications import Publications
 from storage.data_storages.memory import publications_storage
 
 
-class PublicationDAOFactory:
+class PublicationsDAOFactory:
     @staticmethod
     def get_storage(storage_type):
         if storage_type == IN_MEMORY:

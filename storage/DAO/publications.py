@@ -28,4 +28,3 @@ class Publications:
                 break
             yield all_publications[publ_id]
 
-PublicationsMemoryDAO = Publications(publications_storage)

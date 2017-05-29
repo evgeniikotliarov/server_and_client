@@ -73,3 +73,6 @@ DELETE_POST = b'delete_post'
 
 DEFAULT_CACHE_CONTROL = b"max-age=3600000"
 HTTP_1_1 = b'HTTP/1.1'
+
+IN_MEMORY = 'store_in_memory'
+DATABASE = 'store_in_database'

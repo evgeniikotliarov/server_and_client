@@ -1,5 +1,6 @@
 import unittest
-from storage.users import *
+
+from storage.DAO.users import *
 
 
 def create(usr, pwd):

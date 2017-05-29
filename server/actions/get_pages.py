@@ -1,22 +1,22 @@
-from storage.publications import PublicationsMemoryDAO
-from storage.sessions import SessionsMemoryDAO
-from storage.users import UsersMemoryDAO
+from storage.publications_factory import PublicationsDAOFactory
+from storage.sessions_factory import SessionsDAOFactory
+from storage.users_factory import UsersDAOFactory
 
-from template.compiled_templates import index_template, publication_template, profile_template, edit_page_template
 import template.base_view as base
-
-from util.path import get_public_path, get_component_path, file_exists
-from util.files import get_file_type
-from util.constants.const_main import DEFAULT_CACHE_CONTROL
+from template.compiled_templates import index_template, publication_template, profile_template, edit_page_template
 import util.constants.response_codes as codes
+from util.constants.const_main import DEFAULT_CACHE_CONTROL, IN_MEMORY
+from util.files import get_file_type
 from util.files import retrieve_file_buffered, retrieve_file
+from util.path import get_public_path, get_component_path, file_exists
 
-#TODO refractor
+
+# TODO refractor
 
 
 def get_index(request, response_builder):
     path, session_id, query = request.target, request.get_session_id(), request.query
-    publications = list(PublicationsMemoryDAO.get_all_publications())
+    publications = list(PublicationsDAOFactory.get_storage(IN_MEMORY).get_all_publications())
     data = {"publications": publications}
     page = build_html(index_template, data, session_id)
     mime = get_file_type(get_component_path(path))
@@ -27,8 +27,9 @@ def get_index(request, response_builder):
 def get_publication(request, response_builder):
     path, session_id, query = request.target, request.get_session_id(), request.query
     _id = query.decode().split('=')[1]  # TODO нормально спарсить
-    publication = PublicationsMemoryDAO.get_publication(_id)
-    is_author = (SessionsMemoryDAO.get_session(session_id).username == publication.author)
+    publication = PublicationsDAOFactory.get_storage(IN_MEMORY).get_publication(_id)
+    is_author = (SessionsDAOFactory.get_storage(IN_MEMORY).
+                 get_session(session_id).username == publication.author)
     data = {
         "publication": publication,
         "is_author": is_author
@@ -42,7 +43,7 @@ def get_publication(request, response_builder):
 def get_edit_post(request, response_builder):
     path, session_id, query = request.target, request.get_session_id(), request.query
     publication_id = query.decode().split('=')[1]
-    publication = PublicationsMemoryDAO.get_publication(publication_id)
+    publication = PublicationsDAOFactory.get_storage(IN_MEMORY).get_publication(publication_id)
     data = {"publication": publication}
     page = build_html(edit_page_template, data, session_id)
     mime = get_file_type(get_component_path(path))
@@ -53,7 +54,7 @@ def get_edit_post(request, response_builder):
 def get_profile(request, response_builder):
     path, session_id, query = request.target, request.get_session_id(), request.query
     username = query.decode().strip().split('=')[1]  # TODO нормально спарсить
-    user = UsersMemoryDAO.get_user(username)
+    user = UsersDAOFactory.get_storage(IN_MEMORY).get_user(username)
     data = {"publications": reversed(user.get_publications())}
     page = build_html(profile_template, data, session_id)
     mime = get_file_type(get_component_path(path))
@@ -84,9 +85,9 @@ def build_html(template, data, session_id):
 
 
 def get_user(session_id):
-    session = SessionsMemoryDAO.get_session(session_id)
+    session = SessionsDAOFactory.get_storage(IN_MEMORY).get_session(session_id)
     session_alive = session.is_alive() if session else False
-    return UsersMemoryDAO.get_user(session.username) if session_alive else None
+    return UsersDAOFactory.get_storage(IN_MEMORY).get_user(session.username) if session_alive else None
 
 
 def set_ok(response_builder):

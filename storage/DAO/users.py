@@ -44,9 +44,6 @@ class Users:
         return 'Session id was added'
 
 
-UsersMemoryDAO = Users(users_storage)
-
-
 class UserCreationError(Exception):
     pass
 

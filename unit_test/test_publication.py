@@ -1,6 +1,8 @@
 import unittest
-from storage.publications import *
+
+from storage.DAO.publications import *
 from storage.entities.publication import Publication
+
 
 class TestPublication(unittest.TestCase):
 
