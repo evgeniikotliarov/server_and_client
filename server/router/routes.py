@@ -1,48 +1,34 @@
 from util.constants.const_main import *
 
-from server.actions.publication import do_publish, do_edit, do_delete
+import server.actions.publication as publication
 from server.actions.registration import do_register
-from server.actions.get_pages import get_index, get_publication, get_profile, get_static, get_edit_post
-from server.actions.head_pages import head_index, head_publication, head_profile, head_static
+from server.actions.head_pages import *
 from server.actions.auth import do_auth, do_logout
+from server.router.route import Route
 
 
-routes = {
+routes = [
+    Route(GET, MAIN_PAGE, get_index),
+    Route(GET, PUBLICATION_PAGE, get_index),
+    Route(GET, PROFILE_PAGE, get_profile),
+    Route(GET, EDIT_POST_PAGE, get_edit_post),
 
-    GET: {
-        INDEX: get_index,
-        PUBLICATION: get_publication,
-        USER_PAGE: get_profile,
-        STATIC: get_static
-    },
+    Route(HEAD, MAIN_PAGE, head_index),
+    Route(HEAD, PUBLICATION_PAGE, head_publication),
+    Route(HEAD, PROFILE_PAGE, head_profile),
+    Route(HEAD, EDIT_POST_PAGE, head_edit_post),
 
-    HEAD: {
-        INDEX: head_index,
-        PUBLICATION: head_publication,
-        USER_PAGE: head_profile,
-        STATIC: head_static,
-        EDIT_POST: get_edit_post
-    },
+    Route(POST, REGISTER_ACTION_PAGE, do_register),
+    Route(POST, AUTH_ACTION_PAGE, do_auth),
+    Route(POST, LOGOUT_ACTION_PAGE, do_logout),
+    Route(POST, PUBLISH_ACTION_PAGE, publication.do_publish),
+    Route(POST, DELETE_POST_ACTION_PAGE, publication.do_delete),
+    Route(POST, EDIT_POST_ACTION_PAGE, publication.do_delete),
 
-    POST: {
-        REGISTER: do_register,
-        AUTH: do_auth,
-        PUBLISH: do_publish,
-        LOGOUT: do_logout,
-        EDIT: do_edit,
-        DELETE_POST: do_delete
-    },
+    Route(PUT, PUBLISH_ACTION_PAGE, publication.do_publish),
 
-    PUT: {
-        PUBLISH: do_publish
-    },
+    Route(PATCH, PUBLISH_ACTION_PAGE, publication.do_publish),
+    Route(PATCH, EDIT_POST_ACTION_PAGE, publication.do_edit),
 
-    PATCH: {
-        PUBLISH: do_publish,
-        EDIT: do_edit
-    },
-
-    DELETE: {
-        DELETE: do_delete
-    }
-}
+    Route(DELETE, DELETE_POST_ACTION_PAGE, publication.do_delete)
+]

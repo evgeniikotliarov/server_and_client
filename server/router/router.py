@@ -1,27 +1,25 @@
+from functools import partial
 from .routes import routes
 from aliases import ALIASES
-from functools import partial
-from util.path import validate_path
 from server.actions.error import do_not_found_error
+from server.actions.get_pages import get_static
+from server.actions.head_pages import head_static
 from util.constants.response_codes import *
-from util.constants.const_main import STATIC
+from util.constants.const_main import HEAD, GET
+from util.path import is_valid_static
 
 
-def get_request_handler_route(request):
-    insert_aliases(request)
+def get_route(request):
+    insert_aliases(request)  # TODO move out to request transformer
     method, path = request.method, request.target
+    for route in routes:
+        if route.has_method(method) and route.has_path(path):
+            return route.get_handler()
 
-    is_valid_method = method in routes
-    if not is_valid_method: return partial(do_not_found_error(), METHOD_NOT_ALLOWED)
-    handler = routes[method]
-
-    is_path_valid = validate_path(path)
-    is_action_valid = path in handler
-
-    if not (is_path_valid or is_action_valid):
-        return partial(do_not_found_error(), NOT_FOUND)
-
-    return handler[path] if is_action_valid else handler[STATIC]
+    if not is_valid_static(path): return partial(do_not_found_error, NOT_FOUND)
+    elif method == GET: return get_static
+    elif method == HEAD: return head_static
+    else: return partial(do_not_found_error, METHOD_NOT_ALLOWED)
 
 
 def insert_aliases(request):
