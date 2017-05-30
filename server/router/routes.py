@@ -8,12 +8,12 @@ from server.router.route import Route
 
 
 routes = [
-    Route(GET, MAIN_PAGE, get_index),
-    Route(GET, PUBLICATION_PAGE, get_index),
+    Route(GET, INDEX, get_index),
+    Route(GET, PUBLICATION_PAGE, get_publication),
     Route(GET, PROFILE_PAGE, get_profile),
     Route(GET, EDIT_POST_PAGE, get_edit_post),
 
-    Route(HEAD, MAIN_PAGE, head_index),
+    Route(HEAD, INDEX, head_index),
     Route(HEAD, PUBLICATION_PAGE, head_publication),
     Route(HEAD, PROFILE_PAGE, head_profile),
     Route(HEAD, EDIT_POST_PAGE, head_edit_post),
@@ -21,14 +21,7 @@ routes = [
     Route(POST, REGISTER_ACTION_PAGE, do_register),
     Route(POST, AUTH_ACTION_PAGE, do_auth),
     Route(POST, LOGOUT_ACTION_PAGE, do_logout),
-    Route(POST, PUBLISH_ACTION_PAGE, publication.do_publish),
-    Route(POST, DELETE_POST_ACTION_PAGE, publication.do_delete),
-    Route(POST, EDIT_POST_ACTION_PAGE, publication.do_delete),
-
-    Route(PUT, PUBLISH_ACTION_PAGE, publication.do_publish),
-
-    Route(PATCH, PUBLISH_ACTION_PAGE, publication.do_publish),
-    Route(PATCH, EDIT_POST_ACTION_PAGE, publication.do_edit),
-
-    Route(DELETE, DELETE_POST_ACTION_PAGE, publication.do_delete)
+    Route([POST, PUT, PATCH], PUBLISH_ACTION_PAGE, publication.do_publish),
+    Route([POST, DELETE], DELETE_POST_ACTION_PAGE, publication.do_delete),
+    Route([POST, PATCH], EDIT_POST_ACTION_PAGE, publication.do_edit),
 ]
