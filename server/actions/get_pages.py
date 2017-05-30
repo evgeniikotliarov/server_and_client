@@ -1,14 +1,13 @@
+import template.base_view as base
+import util.constants.response_codes as codes
 from storage.publications_dao_factory import PublicationsDAOFactory
 from storage.sessions_dao_factory import SessionsDAOFactory
 from storage.users_dao_factory import UsersDAOFactory
-
-import template.base_view as base
 from template.compiled_templates import index_template, publication_template, profile_template, edit_page_template
-import util.constants.response_codes as codes
-from util.constants.const_main import DEFAULT_CACHE_CONTROL, IN_MEMORY
+from util.constants.misc import DEFAULT_CACHE_CONTROL, IN_MEMORY
 from util.files import get_file_type
 from util.files import retrieve_file_buffered, retrieve_file
-from util.path import get_public_path, get_component_path, file_exists
+from util.path import get_public_path, get_component_path, is_component
 
 
 # TODO refractor
@@ -103,7 +102,3 @@ def attach_file_and_headers(response_builder, file, mime):
     response_builder.set_cache_control(DEFAULT_CACHE_CONTROL)  # TODO different cache-controls for different MIMES
     response_builder.set_content_type(mime)
     return response_builder
-
-
-def is_component(raw_path):
-    return not file_exists(get_public_path(raw_path)) and get_component_path(raw_path)
