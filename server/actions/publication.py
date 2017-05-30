@@ -1,6 +1,6 @@
-from storage.publications_factory import PublicationsDAOFactory
-from storage.sessions_factory import SessionsDAOFactory
-from storage.users_factory import UsersDAOFactory
+from storage.publications_dao_factory import PublicationsDAOFactory
+from storage.sessions_dao_factory import SessionsDAOFactory
+from storage.users_dao_factory import UsersDAOFactory
 
 from paths import *
 from server.form_encodings.decoder import decode_body

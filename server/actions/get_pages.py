@@ -1,6 +1,6 @@
-from storage.publications_factory import PublicationsDAOFactory
-from storage.sessions_factory import SessionsDAOFactory
-from storage.users_factory import UsersDAOFactory
+from storage.publications_dao_factory import PublicationsDAOFactory
+from storage.sessions_dao_factory import SessionsDAOFactory
+from storage.users_dao_factory import UsersDAOFactory
 
 import template.base_view as base
 from template.compiled_templates import index_template, publication_template, profile_template, edit_page_template

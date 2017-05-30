@@ -1,7 +1,7 @@
 from paths import LOGIN_PAGE
 from server.form_encodings.decoder import decode_body
 from storage.DAO.users import UserCreationError
-from storage.users_factory import UsersDAOFactory
+from storage.users_dao_factory import UsersDAOFactory
 from util.redirect import do_redirect, user_exists
 from util.strings import ensure_string
 from util.constants.const_main import IN_MEMORY
