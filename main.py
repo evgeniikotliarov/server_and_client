@@ -1,9 +1,9 @@
 import server.requests.request_parser as request_parser
-import server.requests.request_transformer as request_transformer
 import server.response.response_transformer as response_transformer
 from server.logger import log_request, log_response
 from server.response.response_builder import *
 from server.router import router
+from server.requests.request_transformer_factory import RequestTransformerFactory
 
 socket_server = socket.socket(socket_family, socket_type)
 socket_server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -13,7 +13,8 @@ socket_server.listen()
 while True:
     connection, address = socket_server.accept()
     raw_request = request_parser.get_raw_request(connection)
-    request = request_transformer.transform_request(raw_request) if raw_request else None
+    request_transformer = RequestTransformerFactory.create_transformer(raw_request)
+    request = request_transformer.transform() if raw_request else None
     if not request: continue
     log_request(request)
 
