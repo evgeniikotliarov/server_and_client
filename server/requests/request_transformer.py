@@ -1,14 +1,12 @@
-import re
-
 import util.regexes as regexes
 from server.entities.request import *
 from util.constants.const_main import *
 from util.newline import get_newline_char
-
+from aliases import ALIASES
 new_line = CRLF
 
-class RequestTransformer:
 
+class RequestTransformer:
     def __init__(self, request):
         self.raw_request = request
 
@@ -32,7 +30,7 @@ class RequestTransformer:
 
         request_line = self.parse_status_line(status_line)
 
-        return Request(
+        request = Request(
             request_line["method"],
             request_line["target"],
             request_line["query"],
@@ -40,8 +38,10 @@ class RequestTransformer:
             headers,
             body)
 
+        return self.insert_aliases(request)
 
-    def headers_to_dict(self,headers_list):
+    @staticmethod
+    def headers_to_dict(headers_list):
         headers = {}
         for header in headers_list:
             if BYTE_COLON not in header:
@@ -51,8 +51,8 @@ class RequestTransformer:
             headers[name] = value
         return headers
 
-
-    def parse_status_line(self, status_line):
+    @staticmethod
+    def parse_status_line(status_line):
         found = re.findall(regexes.get_request_regex(), status_line)
         found = found[0]
         if len(found) <= 0: return None
@@ -64,8 +64,16 @@ class RequestTransformer:
             'protocol': protocol
         }
 
-    def has_headers(self, request_lines):
+    @staticmethod
+    def has_headers(request_lines):
         return len(request_lines) >= 1
 
-    def has_body(self, request_lines):
+    @staticmethod
+    def has_body(request_lines):
         return EMPTY_BYTE_STR in request_lines
+
+    @staticmethod
+    def insert_aliases(request):
+        if request.target in ALIASES:
+            request.target = ALIASES[request.target]
+        return request

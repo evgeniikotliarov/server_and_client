@@ -210,7 +210,6 @@ nav ul li a{
 	font-weight: 300;
 	text-align: center;
 	color: grey;
-    overflow:hidden;
 }
 .index_post{
 	border: 10px  #948888;
@@ -218,7 +217,6 @@ nav ul li a{
 	height: 100%;
 	margin-bottom: 50px;
 	border-radius: 10px;
-	overflow:hidden;
 }
 .index_post ul{
 	display: flex;
