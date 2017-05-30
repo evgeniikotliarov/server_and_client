@@ -3,7 +3,7 @@ from util.strings import ensure_string
 from paths import PUBLIC_FOLDER, COMPONENTS_FOLDER
 
 
-def validate_path(requested_path):
+def is_valid_path(requested_path):
     path = get_public_path(requested_path)
     component_path = get_component_path(requested_path)
     if not (file_exists(path) or file_exists(component_path)):
@@ -11,6 +11,10 @@ def validate_path(requested_path):
     if not (is_allowed(path) or is_allowed(component_path)):
         return False
     return True
+
+
+def is_valid_static(path):
+    return is_valid_path(path)
 
 
 def file_exists(file_name):
@@ -24,6 +28,7 @@ def is_allowed(file_name):
 
 
 def get_public_path(raw_path):
+    raw_path = next(ensure_string(raw_path))
     return os.path.join(PUBLIC_FOLDER, strip_slashes(raw_path))
 
 
@@ -34,3 +39,7 @@ def get_component_path(component_raw_path):
 
 def strip_slashes(file_name):
     return file_name.strip('/')
+
+
+def is_component(raw_path):
+    return not file_exists(get_public_path(raw_path)) and get_component_path(raw_path)

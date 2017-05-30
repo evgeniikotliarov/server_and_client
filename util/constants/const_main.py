@@ -1,9 +1,9 @@
 import socket
 
-SERVER_NAME = b"Server server"
+SERVER_NAME = b"Nazvanie servera"
 
 SESSION = b'session'
-SESSION_DEFAULT_AGE = 3600 * 24 * 30  #1 month
+SESSION_DEFAULT_AGE = 3600 * 24 * 30  # 1 Month in seconds
 
 CRLF = '\r\n'
 LF = '\n'
@@ -21,7 +21,7 @@ READ_PLUS = 'r+'
 WRITE = 'w'
 WRITE_PLUS = 'w+'
 MAKEFILE_BUFFER = 0
-APPENT_BYTE = 'ab'
+APPEND_BYTE = 'ab'
 
 EMPTY_STRING = b''
 EMPTY_BYTE_STR = b''
@@ -40,10 +40,10 @@ reuse_adress = True
 socket_family = socket.AF_INET
 socket_type = socket.SOCK_STREAM
 
-METHOD = "method"
 QUERY = "query"
-PROTOCOL = "protocol"
+METHOD = "method"
 TARGET = "target"
+PROTOCOL = "protocol"
 
 MULTIPART = b'multipart'
 
@@ -59,17 +59,18 @@ OPTIONS = b"OPTIONS"
 ACTION_METHODS = [POST, PUT, PATCH]
 STATIC_METHODS = [GET, HEAD, OPTIONS]
 
-REGISTER = b'/register'
-AUTH = b'/auth'
-PUBLISH = b'/publish'
-PUBLICATION = b'/publication.html'
-USER_PAGE = b'/profile.html'
-INDEX = b'/index.html'
+REGISTER_ACTION_PAGE = b'/register'
+AUTH_ACTION_PAGE = b'/auth'
+PUBLISH_ACTION_PAGE = b'/publish'
+LOGOUT_ACTION_PAGE = b'/logout'
+EDIT_POST_ACTION_PAGE = b'/edit'
+PUBLICATION_PAGE = b'/publication.html'
+PROFILE_PAGE = b'/profile.html'
+MAIN_PAGE = b'/index.html'
 STATIC = b''
-LOGOUT = b'/logout'
-EDIT = b'/edit'
-EDIT_POST = b'/edit_post.html'
-DELETE_POST = b'delete_post'
+EDIT_POST_PAGE = b'/edit_post.html'
+DELETE_POST_ACTION_PAGE = b'/delete_post'
+
 
 DEFAULT_CACHE_CONTROL = b"max-age=3600000"
 HTTP_1_1 = b'HTTP/1.1'

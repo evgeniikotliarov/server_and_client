@@ -1,5 +1,5 @@
-from util.constants.const_main import INDEX
+from util.constants.const_main import MAIN_PAGE
 
 ALIASES = {
-    b"/": INDEX
+    b"/": MAIN_PAGE
 }
