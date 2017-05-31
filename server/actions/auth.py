@@ -25,6 +25,7 @@ def do_auth(request, response_builder):
 def do_logout(request, response_builder):
     session_id = request.get_session_id()
     SessionsDAOFactory.get_storage(IN_MEMORY).delete_session(session_id)
+
     return do_redirect(INDEX_PAGE, response_builder)
 
 

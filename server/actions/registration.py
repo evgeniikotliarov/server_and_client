@@ -18,3 +18,8 @@ def do_register(request, response_builder):
         return user_exists(response_builder)
 
     return do_redirect(LOGIN_PAGE, response_builder)
+
+
+
+
+
