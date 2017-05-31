@@ -2,11 +2,12 @@ import time
 
 from util.constants.const_main import *
 
+
 def get_raw_request(connection, timeout=0.3):
     connection.setblocking(0)
     all_data = []
     start = time.time()
-    time_is_up = lambda: time.time() - start > timeout
+    def time_is_up(): return time.time() - start > timeout
 
     while True:
         if time_is_up(): break
@@ -18,6 +19,6 @@ def get_raw_request(connection, timeout=0.3):
             else:
                 time.sleep(0.1)
         except socket.error:
-            pass # TODO error handling here
+            pass
 
     return EMPTY_BYTE_STR.join(all_data)

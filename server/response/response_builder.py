@@ -85,3 +85,4 @@ class ResponseBuilder:
 
     def add_header(self, header):
         self._response.headers.append(header)
+
