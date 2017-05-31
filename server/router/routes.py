@@ -25,3 +25,4 @@ routes = [
     Route([POST, DELETE], DELETE_POST_ACTION_PAGE, publication.do_delete),
     Route([POST, PATCH], EDIT_POST_ACTION_PAGE, publication.do_edit),
 ]
+
