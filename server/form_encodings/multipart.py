@@ -25,6 +25,7 @@ def get_multipart_fields(request):
     return multipart_fields
 
 def get_boundary(request):
+    if not CONTENT_TYPE in request.headers: return None
     content_type = request.headers[CONTENT_TYPE]
     reg = get_boundary_regex()
     found = re.search(reg, content_type)

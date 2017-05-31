@@ -1,6 +1,7 @@
 import unittest
 from server.form_encodings.multipart import *
-from server.requests.request_transformer import transform_request
+from server.form_encodings.decoder import *
+from server.requests.request_transformer import *
 from util.request_samples import *
 
 class TestMultipart(unittest.TestCase):
@@ -22,3 +23,6 @@ class TestMultipart(unittest.TestCase):
         self.assertTrue(len(multipart_fields) == 3)
         self.assertEqual(multipart_fields[1].field_name, b'tel')
         self.assertTrue(len(multipart_fields[2].body) > 100) #file
+
+if __name__ == '__main__':
+    unittest.main()

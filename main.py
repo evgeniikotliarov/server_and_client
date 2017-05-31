@@ -19,7 +19,7 @@ while True:
     log_request(request)
 
     response_builder = ResponseBuilder()
-    request_handler = router.get_request_handler_route(request)
+    request_handler = router.get_route(request)
     response_obj = request_handler(request, response_builder).get_response()
     response = response_transformer.transform_response(response_obj)
 

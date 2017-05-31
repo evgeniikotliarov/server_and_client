@@ -4,7 +4,7 @@ from storage.publications_dao_factory import PublicationsDAOFactory
 from storage.sessions_dao_factory import SessionsDAOFactory
 from storage.users_dao_factory import UsersDAOFactory
 from template.compiled_templates import index_template, publication_template, profile_template, edit_page_template
-from util.constants.misc import DEFAULT_CACHE_CONTROL, IN_MEMORY
+from util.constants.const_main import DEFAULT_CACHE_CONTROL, IN_MEMORY
 from util.files import get_file_type
 from util.files import retrieve_file_buffered, retrieve_file
 from util.path import get_public_path, get_component_path, is_component
