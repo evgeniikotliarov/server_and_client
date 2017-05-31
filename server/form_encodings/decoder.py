@@ -3,7 +3,6 @@ from util.constants.const_main import *
 from .multipart import get_multipart_fields
 from .url_encoded import parse_url_encoded
 
-
 def decode_body(request):
     if is_multipart(request):
         multipart_fields = get_multipart_fields(request)

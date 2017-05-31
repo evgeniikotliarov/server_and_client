@@ -11,7 +11,7 @@ class Request:
         self.protocol = protocol
         self.headers = headers
         self.body = body
-        self.session=None
+        self.session = None
 
     def get_connection(self):
         if CONNECTION in self.headers:

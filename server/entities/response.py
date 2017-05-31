@@ -8,4 +8,3 @@ class Response:
         self.protocol = None
         self.headers = []
         self.body = None
-

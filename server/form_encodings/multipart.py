@@ -1,7 +1,9 @@
 import re
+
 from util.constants.headers import *
-from util.constants.const_main import *
+from util.constants.misc import *
 from util.regexes import *
+
 
 def get_multipart_fields(request):
     multipart_fields = []
@@ -24,6 +26,7 @@ def get_multipart_fields(request):
 
     return multipart_fields
 
+
 def get_boundary(request):
     if not CONTENT_TYPE in request.headers: return None
     content_type = request.headers[CONTENT_TYPE]
@@ -31,6 +34,7 @@ def get_boundary(request):
     found = re.search(reg, content_type)
     if found:
         return found.group(1)
+
 
 def wrap_multipart(multipart_field):
     disposition_regex = get_content_disposition_regex()
