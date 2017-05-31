@@ -7,7 +7,7 @@ logs_file = os.path.join(LOGS_FOLDER, 'logs.txt')
 
 
 def log(message):
-    with open(logs_file, APPENT_BYTE) as file:
+    with open(logs_file, APPEND_BYTE) as file:
         file.write(LF_BYTE + message + LF_BYTE)
 
 
