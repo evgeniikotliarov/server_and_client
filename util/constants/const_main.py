@@ -32,7 +32,7 @@ BYTE_COLON = b':'
 REQUEST_RECV_SIZE = 1024
 MAX_CONNECTIONS = 10
 
-HOST = ''
+HOST = '172.29.77.58'
 PORT = 3333
 
 reuse_adress = True
