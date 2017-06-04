@@ -1,7 +1,7 @@
 from util.id_generator import generate_id
 
 
-class Publication:
+class Publications:
     def __init__(self, author=None, title="", text="", attachments=None):
         self.author = author
         self.title = title

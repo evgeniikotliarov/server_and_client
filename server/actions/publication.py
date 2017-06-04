@@ -8,7 +8,7 @@ from util.files import *
 from util.id_generator import generate_id
 from util.redirect import do_redirect
 from util.strings import ensure_string
-from util.constants.misc import IN_MEMORY
+from util.constants.const_main import IN_MEMORY
 
 
 def do_publish(request, response_builder, _id=None):
