@@ -2,6 +2,7 @@ from storage.entities.user import User
 
 users = {}
 
+
 def create_user(username, password):
     user = User(username, password)
     users[username] = user

@@ -1,8 +1,10 @@
 from storage.entities.session import Session
 
+
 _sessions = {}
 
-def create_sessions(username, age):
+
+def create_session(username, age):
     session = Session(username, age)
     _sessions[session.get_id()] = session
     return session
