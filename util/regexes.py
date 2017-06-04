@@ -1,5 +1,3 @@
-
-
 def get_regex_date_format():
     return r'\w{3},\s\d{2}\s\w{3}\s\d{4}\s\d{2}:\d{2}:\d{2}\s[A-Z]{3}'
 

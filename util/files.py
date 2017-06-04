@@ -1,5 +1,4 @@
 import mimetypes
-
 from paths import PUBLIC_FOLDER
 from .constants.const_main import *
 from os.path import join
@@ -20,9 +19,8 @@ def get_file_type(file_path):
     return mime.encode()
 
 
-def save_image(file, file_name, file_path=None):
+def save_image(file, filename, file_path=None):
     if not file_path:
-        file_path = join(PUBLIC_FOLDER, b'image')
-    with open(join(file_path, file_name), WRITE_BUFFER) as destination:
+        file_path = join(PUBLIC_FOLDER, 'image')
+    with open(join(file_path, filename), WRITE_BUFFER) as destination:
         destination.write(file)
-

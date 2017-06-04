@@ -1,5 +1,6 @@
 from util.constants.response_codes import SEE_OTHER, OK
 
+
 def do_redirect(page, response_builder):
     code, message = SEE_OTHER
     response_builder.set_code(code)
@@ -9,7 +10,7 @@ def do_redirect(page, response_builder):
 
 
 def wrong_credentials(response_builder):
-    return  _send_text("<h1>Wrong credentials.</h1>", response_builder)
+    return _send_text("<h1>Wrong credentials.</h1>", response_builder)
 
 
 def user_exists(response_builder):

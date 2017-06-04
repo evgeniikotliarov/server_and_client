@@ -43,3 +43,4 @@ def strip_slashes(file_name):
 
 def is_component(raw_path):
     return not file_exists(get_public_path(raw_path)) and get_component_path(raw_path)
+
