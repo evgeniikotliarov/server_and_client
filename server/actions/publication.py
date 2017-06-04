@@ -66,7 +66,7 @@ def do_delete(request, response_builder):
 def get_attachments(fields):
     attachments = []
     for field, value in fields.items():
-        if field.startswith('attachment') and value:
+        if field.startswith('attachments') and value:
             attachments.append(value)
     return attachments
 
