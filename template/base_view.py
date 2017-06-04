@@ -1,14 +1,15 @@
 from paths import *
-from template.template import Template
+from template.template_engine import Template
 from util.files import retrieve_file
 
 _base_data = ''
 
 
 def render_base(data):
+
     base_template = Template(_base_data)
     base_template.compile()
-    return base_template.render(data).encode
+    return base_template.render(data).encode()
 
 
 def insert_content(content):

@@ -1,6 +1,6 @@
 from paths import *
-from template.template import Template
 from util.path import get_component_path
+from template.template_engine import Template
 from util.files import retrieve_file
 
 _index_data = retrieve_file(get_component_path(INDEX_PAGE))
@@ -18,4 +18,3 @@ edit_page_template.compile()
 _profile_data = retrieve_file(get_component_path(PROFILE_PAGE))
 profile_template = Template(_profile_data)
 profile_template.compile()
-

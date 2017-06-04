@@ -9,4 +9,4 @@ FOR = 'for'
 END = 'end'
 ELSE = 'else'
 
-SPACING_CHARS = 'r\n\t'
+SPACING_CHARS = '\r\n\t'
