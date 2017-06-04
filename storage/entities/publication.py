@@ -15,6 +15,5 @@ class Publication:
     def set_id(self, _id):
         self._id = _id
 
-
-    def get_first_attachments(self):
+    def get_first_attachment(self):
         return self.attachments[0] if self.attachments else None

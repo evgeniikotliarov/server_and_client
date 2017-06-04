@@ -1,29 +1,19 @@
-from storage.data_storages.memory import publications_storage
+from util.id_generator import generate_id
 
 
-class Publications:
-    def __init__(self, publication_storage):
-        self.storage = publication_storage
+class Publication:
+    def __init__(self, author=None, title="", text="", attachments=None):
+        self.author = author
+        self.title = title
+        self.text = text
+        self.attachments = attachments
+        self._id = generate_id()
 
-    def create_publication(self, author, title, text, attachments=None, _id=None):
-        return self.storage.create_publication(author, title, text, attachments, _id=_id)
+    def get_id(self):
+        return self._id
 
-    def delete_publication(self, _id):
-        self.storage.delete_publication(_id)
+    def set_id(self, _id):
+        self._id = _id
 
-    def replace_publication(self, _id, author, title, text):
-        self.delete_publication(_id)
-        self.create_publication(author, title, text, _id= _id)
-
-    def get_publication(self, _id):
-        return self.storage.get_publication(_id)
-
-    def get_all_publications(self):
-        return self.storage.get_all_publications()
-
-    def get_n_last_publications(self, number=10):
-        all_publications = self.storage.get_all_publications()
-        for i, publ_id in enumerate(reversed(all_publications)):
-            if i > number:
-                break
-            yield all_publications[publ_id]
+    def get_first_attachment(self):
+        return self.attachments[0] if self.attachments else None

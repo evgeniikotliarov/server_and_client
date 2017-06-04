@@ -6,8 +6,8 @@ class Session:
     def __init__(self, username, max_age):
         self._id = generate_id()
         self.username = username
+        self.born = self.refresh()
         self.max_age = max_age
-        self.born = self.refresh
 
     def is_alive(self):
         now = time.time()
@@ -23,3 +23,4 @@ class Session:
     def refresh(self):
         self.born = time.time()
         return self.born
+
